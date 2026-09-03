@@ -3,7 +3,7 @@
  "source_root": "public_site",
  "file_count": 10,
  "total_bytes": 471753,
- "bundle_sha256": "d82eb42ce5887bc8592c92f7beaa0640c8e73a435551e8df5d3124279081a714",
+ "bundle_sha256": "29fe1964401f92ece4dbbba1ee597eeec1da22b11203c17f98564cd609c2a073",
  "sanitizer_passed": true,
  "allowlist_entries_without_files": [],
  "files": [
@@ -53,7 +53,7 @@
    "path": "hf_forward_v1_data.json",
    "source": "hf_forward_v1/hf_forward_v1_data.json",
    "bytes": 10641,
-   "sha256": "61f70f298fb56b1adf050fe2497693db5e41a07a67904dbaf27852fb20d6489d"
+   "sha256": "6cd13617447c20d63640e0bdf7a4deaf6fde4f34efa99e486adb881f91de4c8f"
   },
   {
    "path": "index.html",
