@@ -1,0 +1,8 @@
+# Publish bytes exactly as exported.
+#
+# The dashboard bundle is hashed at export time and re-verified against
+# public_bundle_manifest.json by the Pages workflow. If git rewrites line
+# endings on checkout, every text file fails that check with a size mismatch —
+# which is exactly what happened on the first release attempt. Disable all
+# conversion so what is committed is what is served and what was hashed.
+* -text
