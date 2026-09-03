@@ -1,0 +1,71 @@
+{
+ "contract_version": 1,
+ "source_root": "public_site",
+ "file_count": 10,
+ "total_bytes": 471305,
+ "bundle_sha256": "aa734b47668e35cc0e17b6570311f06fd8bdb19c5babf26d497556f3ee847cdf",
+ "sanitizer_passed": true,
+ "allowlist_entries_without_files": [],
+ "files": [
+  {
+   "path": "assets/apple-touch-icon.png",
+   "source": "assets/apple-touch-icon.png",
+   "bytes": 21379,
+   "sha256": "d0c4ded5757e89c97bdd2726154267ee8bf189f30b03c518bd60b6b2d754b757"
+  },
+  {
+   "path": "assets/favicon.png",
+   "source": "assets/favicon.png",
+   "bytes": 2739,
+   "sha256": "4e53730cde427adacf649cd2eebcdabaf106f36db1229f7db9619c1631958015"
+  },
+  {
+   "path": "assets/logo_WSS2.png",
+   "source": "assets/logo_WSS2.png",
+   "bytes": 180129,
+   "sha256": "f4a9fa6e9401d419fa073ac3c9c712f318a6afd500a5c3ed45ef471ce94fd8eb"
+  },
+  {
+   "path": "assets/wss2-og.png",
+   "source": "assets/wss2-og.png",
+   "bytes": 230710,
+   "sha256": "88f16a42368d10d5f2a29e4e63e326a2ae6b1135fd805bd77991c10f93d6df49"
+  },
+  {
+   "path": "candidate.js",
+   "source": "hf_forward_v1/candidate.js",
+   "bytes": 6808,
+   "sha256": "a4a9418313cd01d535d8998c356d0151fb7277270e5afe89c5ff14b73c7b3d21"
+  },
+  {
+   "path": "candidate_hfw014_rpq_btc_v0.html",
+   "source": "hf_forward_v1/candidate_hfw014_rpq_btc_v0.html",
+   "bytes": 1581,
+   "sha256": "ca3fff9912dd5309a935d19e7bec0af2dcff98d870c439324e289330717c447f"
+  },
+  {
+   "path": "candidate_xvfv_cheap_yes_hf_v0.html",
+   "source": "hf_forward_v1/candidate_xvfv_cheap_yes_hf_v0.html",
+   "bytes": 1577,
+   "sha256": "cc4a5125e3a460582475c12505eeb613c7079295d4ebb899115be2e354295f17"
+  },
+  {
+   "path": "hf_forward_v1_data.json",
+   "source": "hf_forward_v1/hf_forward_v1_data.json",
+   "bytes": 11022,
+   "sha256": "4dba93c5370ec560d253d7b5d833a1c9b728bcc7c917f3598c3ebd6d700adb6e"
+  },
+  {
+   "path": "index.html",
+   "source": "hf_forward_v1/index.html",
+   "bytes": 9675,
+   "sha256": "46992bebc70fafd1f6b14f1cdbcab3e99e8cb4ef1b1952089799d1cfd0200dfd"
+  },
+  {
+   "path": "style.css",
+   "source": "hf_forward_v1/style.css",
+   "bytes": 5685,
+   "sha256": "ab6061958890e71a87e58cc61839999c9c10ff0adb1946e60459bedf903dc7b3"
+  }
+ ]
+}

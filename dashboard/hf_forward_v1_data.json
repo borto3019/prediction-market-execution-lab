@@ -1,0 +1,453 @@
+{
+ "generated_utc": "2026-08-26T15:28:09.409031Z",
+ "stale_after_hours": 24,
+ "status_badge": "Fresh-forward paper validation",
+ "paper_only": true,
+ "status_line": "Paper research candidate \u2014 fresh-forward validation. Evaluated prospectively in simulation; no real orders.",
+ "headline": {
+  "synchronized_observations": "1.90M",
+  "engineered_features": 181,
+  "specifications_attempted": 4820,
+  "eth_paper_candidates": 2,
+  "contracts_per_entry": "10",
+  "contracts_per_entry_label": "Contracts / entry"
+ },
+ "btc_section": {
+  "attempted_specs": 2410,
+  "successful_specs": 2236,
+  "panel": "Full 5-second high-frequency BTC panel (71 days, 6,645 contracts)",
+  "outcome": "No BTC candidate has met the frozen promotion threshold in any cycle to date: the global search-adjustment p-value remains 1.00, meaning every apparent BTC result is within search noise.",
+  "research_cycle": "hf_weekly_2026-08-03"
+ },
+ "sharpe_note": "Sharpe = mean/std of daily net PnL \u00d7 \u221a365 (repository canonical convention); live value shown only after \u22655 resolved daily observations.",
+ "candidates": {
+  "xvfv_cheap_yes_hf_v0": {
+   "code": "XVFV-08",
+   "title": "Cross-Venue Cheap YES",
+   "asset": "ETH",
+   "side": "YES",
+   "window": "2\u20137 min to expiry",
+   "mechanism": "Enters YES when the Kalshi executable price is materially below a Kraken-derived barrier fair value \u2014 a cross-venue dislocation that historically closed by settlement.",
+   "research_oof": {
+    "pnl_usd": 234.65,
+    "trades": 723,
+    "sharpe_ann": 7.23,
+    "blocks_positive": "5/7"
+   },
+   "replay": {
+    "pnl_usd": 288.41,
+    "trades": 1027,
+    "sharpe_ann": 6.21,
+    "max_drawdown_usd": -66.12
+   },
+   "ablation_note": "Removing the cross-venue input channel eliminates the edge entirely; sparse (per-decision) sampling cannot detect the signal.",
+   "forward": {
+    "cum_pnl_usd": 49.85,
+    "resolved_trades": 778,
+    "contracts_per_entry": 10,
+    "avg_capital_deployed_usd": 4.34,
+    "avg_net_per_trade_usd": 0.06,
+    "net_per_100_deployed": 1.47,
+    "sharpe_ann": 1.47,
+    "sharpe_min_days": 5,
+    "max_drawdown_usd": -125.54,
+    "days_live": 34.3,
+    "inception_utc": "2026-07-23T07:19:28.695379Z",
+    "latest_update_utc": "2026-08-26T14:02:05.203754Z",
+    "positive_day_pct": 48.6,
+    "avg_entry_price": 0.421,
+    "avg_fee_usd": 0.131,
+    "daily_series": [
+     {
+      "date": "2026-07-23",
+      "daily_pnl": 7.23,
+      "cum_pnl": 7.23,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-07-24",
+      "daily_pnl": 2.35,
+      "cum_pnl": 9.58,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-07-25",
+      "daily_pnl": 40.26,
+      "cum_pnl": 49.84,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-07-26",
+      "daily_pnl": -6.25,
+      "cum_pnl": 43.59,
+      "drawdown": -6.25
+     },
+     {
+      "date": "2026-07-27",
+      "daily_pnl": 0.38,
+      "cum_pnl": 43.97,
+      "drawdown": -5.87
+     },
+     {
+      "date": "2026-07-28",
+      "daily_pnl": 32.0,
+      "cum_pnl": 75.97,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-07-29",
+      "daily_pnl": 14.01,
+      "cum_pnl": 89.98,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-07-30",
+      "daily_pnl": -2.28,
+      "cum_pnl": 87.69,
+      "drawdown": -2.28
+     },
+     {
+      "date": "2026-07-31",
+      "daily_pnl": 21.54,
+      "cum_pnl": 109.23,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-01",
+      "daily_pnl": -4.96,
+      "cum_pnl": 104.28,
+      "drawdown": -4.96
+     },
+     {
+      "date": "2026-08-02",
+      "daily_pnl": 1.0,
+      "cum_pnl": 105.28,
+      "drawdown": -3.96
+     },
+     {
+      "date": "2026-08-03",
+      "daily_pnl": -25.21,
+      "cum_pnl": 80.06,
+      "drawdown": -29.17
+     },
+     {
+      "date": "2026-08-04",
+      "daily_pnl": 25.03,
+      "cum_pnl": 105.09,
+      "drawdown": -4.14
+     },
+     {
+      "date": "2026-08-05",
+      "daily_pnl": 19.48,
+      "cum_pnl": 124.58,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-06",
+      "daily_pnl": 40.34,
+      "cum_pnl": 164.92,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-07",
+      "daily_pnl": -20.6,
+      "cum_pnl": 144.32,
+      "drawdown": -20.6
+     },
+     {
+      "date": "2026-08-08",
+      "daily_pnl": 6.2,
+      "cum_pnl": 150.52,
+      "drawdown": -14.4
+     },
+     {
+      "date": "2026-08-09",
+      "daily_pnl": -6.86,
+      "cum_pnl": 143.66,
+      "drawdown": -21.26
+     },
+     {
+      "date": "2026-08-10",
+      "daily_pnl": -18.98,
+      "cum_pnl": 124.68,
+      "drawdown": -40.24
+     },
+     {
+      "date": "2026-08-11",
+      "daily_pnl": 13.72,
+      "cum_pnl": 138.4,
+      "drawdown": -26.52
+     },
+     {
+      "date": "2026-08-12",
+      "daily_pnl": -10.6,
+      "cum_pnl": 127.8,
+      "drawdown": -37.12
+     },
+     {
+      "date": "2026-08-13",
+      "daily_pnl": -3.09,
+      "cum_pnl": 124.71,
+      "drawdown": -40.21
+     },
+     {
+      "date": "2026-08-14",
+      "daily_pnl": -0.33,
+      "cum_pnl": 124.38,
+      "drawdown": -40.53
+     },
+     {
+      "date": "2026-08-15",
+      "daily_pnl": 17.19,
+      "cum_pnl": 141.57,
+      "drawdown": -23.35
+     },
+     {
+      "date": "2026-08-16",
+      "daily_pnl": -5.03,
+      "cum_pnl": 136.54,
+      "drawdown": -28.38
+     },
+     {
+      "date": "2026-08-17",
+      "daily_pnl": -1.85,
+      "cum_pnl": 134.69,
+      "drawdown": -30.23
+     },
+     {
+      "date": "2026-08-18",
+      "daily_pnl": 2.71,
+      "cum_pnl": 137.4,
+      "drawdown": -27.52
+     },
+     {
+      "date": "2026-08-19",
+      "daily_pnl": 25.87,
+      "cum_pnl": 163.27,
+      "drawdown": -1.65
+     },
+     {
+      "date": "2026-08-20",
+      "daily_pnl": -17.01,
+      "cum_pnl": 146.26,
+      "drawdown": -18.66
+     },
+     {
+      "date": "2026-08-21",
+      "daily_pnl": -19.9,
+      "cum_pnl": 126.36,
+      "drawdown": -38.56
+     },
+     {
+      "date": "2026-08-22",
+      "daily_pnl": -11.1,
+      "cum_pnl": 115.26,
+      "drawdown": -49.66
+     },
+     {
+      "date": "2026-08-23",
+      "daily_pnl": -22.48,
+      "cum_pnl": 92.78,
+      "drawdown": -72.14
+     },
+     {
+      "date": "2026-08-24",
+      "daily_pnl": -29.5,
+      "cum_pnl": 63.28,
+      "drawdown": -101.64
+     },
+     {
+      "date": "2026-08-25",
+      "daily_pnl": -23.9,
+      "cum_pnl": 39.38,
+      "drawdown": -125.54
+     },
+     {
+      "date": "2026-08-26",
+      "daily_pnl": 10.47,
+      "cum_pnl": 49.85,
+      "drawdown": -115.07
+     }
+    ],
+    "state": "live"
+   },
+   "lifecycle": "active",
+   "status": "Active paper candidate",
+   "entries_stopped": false
+  },
+  "hfw014_rpq_btc_v0": {
+   "code": "HFW-014",
+   "title": "Aged Cross-Venue Dislocation",
+   "asset": "BTC",
+   "side": "YES",
+   "window": "2\u20137 min to expiry",
+   "mechanism": "Enters YES when the Kalshi executable price has sat below a Kraken-derived barrier fair value for a sustained period \u2014 a dislocation that has survived the market's chance to close it.",
+   "research_oof": {
+    "pnl_usd": 120.6,
+    "trades": 643,
+    "sharpe_ann": 2.88,
+    "blocks_positive": "5/7"
+   },
+   "replay": {
+    "pnl_usd": 124.8,
+    "trades": 641,
+    "sharpe_ann": 3.0,
+    "max_drawdown_usd": -47.3
+   },
+   "ablation_note": "Fresh-forward paper validation. The broader BTC search remains globally non-significant; this rule is being monitored prospectively.",
+   "forward": {
+    "cum_pnl_usd": 35.34,
+    "resolved_trades": 413,
+    "contracts_per_entry": 10,
+    "avg_capital_deployed_usd": 5.97,
+    "avg_net_per_trade_usd": 0.09,
+    "net_per_100_deployed": 1.43,
+    "sharpe_ann": 1.86,
+    "sharpe_min_days": 5,
+    "max_drawdown_usd": -56.24,
+    "days_live": 19.9,
+    "inception_utc": "2026-08-06T18:16:50.061989Z",
+    "latest_update_utc": "2026-08-26T13:02:03.876371Z",
+    "positive_day_pct": 61.9,
+    "avg_entry_price": 0.584,
+    "avg_fee_usd": 0.124,
+    "daily_series": [
+     {
+      "date": "2026-08-06",
+      "daily_pnl": 4.83,
+      "cum_pnl": 4.83,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-07",
+      "daily_pnl": 9.49,
+      "cum_pnl": 14.32,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-08",
+      "daily_pnl": 0.46,
+      "cum_pnl": 14.78,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-09",
+      "daily_pnl": -7.96,
+      "cum_pnl": 6.82,
+      "drawdown": -7.96
+     },
+     {
+      "date": "2026-08-10",
+      "daily_pnl": 5.79,
+      "cum_pnl": 12.61,
+      "drawdown": -2.17
+     },
+     {
+      "date": "2026-08-11",
+      "daily_pnl": 4.8,
+      "cum_pnl": 17.41,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-12",
+      "daily_pnl": 3.96,
+      "cum_pnl": 21.37,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-13",
+      "daily_pnl": 23.64,
+      "cum_pnl": 45.02,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-14",
+      "daily_pnl": -25.3,
+      "cum_pnl": 19.72,
+      "drawdown": -25.3
+     },
+     {
+      "date": "2026-08-15",
+      "daily_pnl": 13.28,
+      "cum_pnl": 33.0,
+      "drawdown": -12.01
+     },
+     {
+      "date": "2026-08-16",
+      "daily_pnl": 21.27,
+      "cum_pnl": 54.27,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-17",
+      "daily_pnl": 17.14,
+      "cum_pnl": 71.41,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-08-18",
+      "daily_pnl": -4.77,
+      "cum_pnl": 66.64,
+      "drawdown": -4.77
+     },
+     {
+      "date": "2026-08-19",
+      "daily_pnl": -16.69,
+      "cum_pnl": 49.95,
+      "drawdown": -21.46
+     },
+     {
+      "date": "2026-08-20",
+      "daily_pnl": 10.1,
+      "cum_pnl": 60.05,
+      "drawdown": -11.36
+     },
+     {
+      "date": "2026-08-21",
+      "daily_pnl": -26.97,
+      "cum_pnl": 33.08,
+      "drawdown": -38.33
+     },
+     {
+      "date": "2026-08-22",
+      "daily_pnl": -17.9,
+      "cum_pnl": 15.17,
+      "drawdown": -56.24
+     },
+     {
+      "date": "2026-08-23",
+      "daily_pnl": 42.38,
+      "cum_pnl": 57.55,
+      "drawdown": -13.86
+     },
+     {
+      "date": "2026-08-24",
+      "daily_pnl": 3.24,
+      "cum_pnl": 60.79,
+      "drawdown": -10.62
+     },
+     {
+      "date": "2026-08-25",
+      "daily_pnl": -5.5,
+      "cum_pnl": 55.29,
+      "drawdown": -16.12
+     },
+     {
+      "date": "2026-08-26",
+      "daily_pnl": -19.95,
+      "cum_pnl": 35.34,
+      "drawdown": -36.07
+     }
+    ],
+    "state": "live"
+   },
+   "lifecycle": "active",
+   "status": "Active paper candidate",
+   "entries_stopped": false
+  }
+ },
+ "active_candidates": [
+  "xvfv_cheap_yes_hf_v0",
+  "hfw014_rpq_btc_v0"
+ ]
+}

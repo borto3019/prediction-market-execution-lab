@@ -1,0 +1,86 @@
+# Publish the sanitized dashboard bundle to GitHub Pages.
+#
+# Deliberately minimal. No SSH, no venue APIs, no research code, and no access
+# to the private repository. If this repository were fully compromised, the
+# attacker would obtain a static site they could already read.
+#
+# The bundle is built and sanitized upstream in the private system. This job
+# re-verifies the manifest rather than trusting it, so a bundle altered in
+# transit or edited by hand fails before it is published.
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["dashboard/**", ".github/workflows/deploy-pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify manifest hashes and reject strays
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, sys
+          root = pathlib.Path("dashboard")
+          mpath = root / "public_bundle_manifest.json"
+          if not mpath.exists():
+              print("::error::dashboard/public_bundle_manifest.json missing")
+              sys.exit(1)
+          m = json.loads(mpath.read_text(encoding="utf-8"))
+          problems, listed = [], set()
+          for f in m["files"]:
+              rel = f["path"]; listed.add(rel)
+              p = root / rel
+              if not p.is_file():
+                  problems.append(f"missing: {rel}"); continue
+              data = p.read_bytes()
+              if len(data) != f["bytes"]:
+                  problems.append(f"size mismatch: {rel}")
+              elif hashlib.sha256(data).hexdigest() != f["sha256"]:
+                  problems.append(f"hash mismatch: {rel}")
+          for p in root.rglob("*"):
+              if p.is_file():
+                  rel = p.relative_to(root).as_posix()
+                  if rel not in listed and rel not in {"public_bundle_manifest.json", ".nojekyll"}:
+                      problems.append(f"unlisted file present: {rel}")
+          if problems:
+              for x in problems: print(f"::error::{x}")
+              sys.exit(1)
+          print(f"manifest OK: {len(m['files'])} files, {m['total_bytes']} bytes")
+          PY
+      - name: Reject forbidden file types
+        run: |
+          if find . -path ./.git -prune -o -type f \( \
+               -name '*.parquet' -o -name '*.jsonl' -o -name '*.pem' -o \
+               -name '*.key' -o -name '.env*' -o -name 'id_rsa*' \) -print | grep -q .; then
+            echo "::error::forbidden file type present"; exit 1
+          fi
+          echo "no forbidden file types"
+
+  deploy:
+    needs: verify
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dashboard
+      - id: deployment
+        uses: actions/deploy-pages@v4

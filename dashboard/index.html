@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>High-Frequency Prediction Market Research — WSS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div id="stale-banner" style="display:none"></div>
+
+<div class="hero">
+  <h1>High-Frequency Prediction Market Research</h1>
+  <p class="sub">Cross-venue ETH paper candidates selected from a synchronized
+  5-second Kalshi–Kraken research panel.</p>
+  <span class="chip"><span class="dot"></span>Fresh-forward paper validation</span>
+  <span class="chip">Paper-only · simulation · no real orders</span>
+  <div id="refreshed" class="mono" style="margin-top:10px;font-size:.78em;color:#969cab"></div>
+</div>
+
+<div class="metrics">
+  <div class="metric"><div class="v" id="hd-obs">—</div><div class="k">Synchronized observations</div></div>
+  <div class="metric"><div class="v" id="hd-feat">—</div><div class="k">Engineered features</div></div>
+  <div class="metric"><div class="v" id="hd-specs">—</div><div class="k">Specifications attempted</div></div>
+  <div class="metric"><div class="v" id="hd-active">—</div><div class="k">Active paper candidates</div></div>
+  <div class="metric"><div class="v" id="hd-scale">—</div><div class="k" id="hd-scale-k">Contracts / entry</div></div>
+</div>
+
+<section>
+  <h3>Active Paper Candidates</h3>
+  <div class="cards" id="cards"></div>
+</section>
+
+
+<section>
+  <h3>BTC High-Frequency Search</h3>
+  <div class="panel">
+    <p><b id="btc-outcome">—</b>
+    The identical panel, feature set, and nested out-of-fold protocol were applied to BTC
+    over the full high-frequency coverage window.</p>
+    <div class="btc-facts">
+      <div class="m"><div class="v mono" id="btc-att">—</div><div class="k">Specs attempted</div></div>
+      <div class="m"><div class="v mono" id="btc-ok">—</div><div class="k">Specs completed</div></div>
+      <div class="m"><div class="v mono" id="btc-days">—</div><div class="k">Panel coverage</div></div>
+      <div class="m"><div class="v mono" id="btc-ctr">—</div><div class="k">Contracts</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3>Research Architecture</h3>
+  <div class="panel">
+    <div class="arch">
+      <span class="node src">Kalshi ETH L2</span>
+      <span class="plus">+</span>
+      <span class="node src">Kraken ETH L2</span>
+      <span class="arrow">→</span>
+      <span class="node">Causal synchronized panel</span>
+      <span class="arrow">→</span>
+      <span class="node">Cross-venue state</span>
+      <span class="arrow">→</span>
+      <span class="node">Nested OOF search</span>
+      <span class="arrow">→</span>
+      <span class="node">Stateful replay</span>
+      <span class="arrow">→</span>
+      <span class="node">Fresh-forward paper validation</span>
+    </div>
+  </div>
+</section>
+
+<p class="footer-note">Research candidates are evaluated prospectively in simulation;
+no real orders are submitted. <span id="sharpe-note"></span>
+<span id="gen-ts" class="mono"></span></p>
+
+</div>
+<script>
+fetch('hf_forward_v1_data.json').then(r=>r.json()).then(D=>{
+  document.getElementById('sharpe-note').textContent = D.sharpe_note + ' ';
+  // freshness policy: label the refresh time; flag stale snapshots explicitly
+  const gen = new Date(D.generated_utc);
+  const ageH = (Date.now() - gen.getTime()) / 3.6e6;
+  const fmt = gen.toISOString().slice(0,16).replace('T',' ') + ' UTC';
+  document.getElementById('refreshed').textContent = 'Data refreshed: ' + fmt;
+  document.getElementById('gen-ts').textContent = 'Data refreshed ' + fmt;
+  if (D.headline) {
+    document.getElementById('hd-scale').textContent = D.headline.contracts_per_entry ?? '—';
+    document.getElementById('hd-scale-k').textContent = D.headline.contracts_per_entry_label || 'Contracts / entry';
+  }
+  if (ageH > (D.stale_after_hours || 24)) {
+    const b = document.getElementById('stale-banner');
+    b.style.display = 'block';
+    b.style.cssText = 'display:block;border:1px solid #e7b24a;background:rgba(231,178,74,.12);'
+      + 'color:#e7b24a;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:.85em';
+    b.textContent = '⚠ Data snapshot stale — regenerated ' + Math.floor(ageH)
+      + 'h ago (threshold ' + (D.stale_after_hours || 24) + 'h). Forward metrics below may not be current.';
+  }
+  const order = ['xvfv_cheap_yes_hf_v0','hfw017_spx_eth_v0','hfw014_rpq_btc_v0'];
+  const cls = {xvfv_cheap_yes_hf_v0:'cand-a', hfw017_spx_eth_v0:'cand-b', hfw014_rpq_btc_v0:'cand-c'};
+  const money = v => (v>=0?'+':'−') + '$' + Math.abs(v).toFixed(2);
+  const cardHtml = (id,c) => {
+    const f=c.forward, r=c.research_oof, p=c.replay;
+    const live = f.state==='live';
+    const sharpeLive = f.sharpe_ann==null ? '—' : f.sharpe_ann.toFixed(2);
+    return `<div class="card ${cls[id]}">
+      <h2>${c.title} <span class="code">${c.code}</span></h2>
+      <p class="mech">${c.mechanism} <span class="mono" style="color:var(--muted)">${c.asset} · ${c.side} · ${c.window}</span></p>
+      <div class="mgroups">
+        <div class="mgroup"><div class="glabel">Research OOF</div>
+          <div class="mrow">
+            <div class="m"><div class="v ${r.pnl_usd>=0?'pos':'neg'}">${money(r.pnl_usd)}</div><div class="k">PnL</div></div>
+            <div class="m"><div class="v">${r.trades.toLocaleString()}</div><div class="k">Trades</div></div>
+            <div class="m"><div class="v">${r.sharpe_ann.toFixed(2)}</div><div class="k">Sharpe (ann.)</div></div>
+            <div class="m"><div class="v">${r.blocks_positive}</div><div class="k">Blocks +</div></div>
+          </div></div>
+        <div class="mgroup"><div class="glabel">Stateful replay</div>
+          <div class="mrow">
+            <div class="m"><div class="v ${p.pnl_usd>=0?'pos':'neg'}">${money(p.pnl_usd)}</div><div class="k">PnL</div></div>
+            <div class="m"><div class="v">${p.trades.toLocaleString()}</div><div class="k">Trades</div></div>
+            <div class="m"><div class="v">${p.sharpe_ann.toFixed(2)}</div><div class="k">Sharpe (ann.)</div></div>
+            <div class="m"><div class="v neg">${money(p.max_drawdown_usd)}</div><div class="k">Max DD</div></div>
+          </div></div>
+        <div class="mgroup"><div class="glabel">Live forward</div>
+          <div class="mrow five">
+            <div class="m"><div class="v ${live?(f.cum_pnl_usd>=0?'pos':'neg'):'na'}">${money(f.cum_pnl_usd)}</div><div class="k">PnL</div></div>
+            <div class="m"><div class="v ${live?'':'na'}">${f.resolved_trades}</div><div class="k">Resolved</div></div>
+            <div class="m"><div class="v ${f.sharpe_ann==null?'na':''}">${sharpeLive}</div><div class="k">Sharpe (ann.)</div></div>
+            <div class="m"><div class="v ${live?'neg':'na'}">${money(f.max_drawdown_usd)}</div><div class="k">Max DD</div></div>
+            <div class="m"><div class="v">${f.days_live!=null?f.days_live+'d':'—'}</div><div class="k">Live</div></div>
+          </div>
+          ${live? '' : '<div class="await"><span class="dot"></span>Awaiting resolved observations · inception ' + (f.inception_utc||'').slice(0,16).replace('T',' ') + 'Z</div>'}
+        </div>
+        ${live? `<div class="mgroup"><div class="glabel">Capital efficiency <span class="mono" style="color:var(--muted);font-weight:400">live forward · resolved entries</span></div>
+          <div class="mrow">
+            <div class="m"><div class="v">${f.contracts_per_entry}</div><div class="k">Contracts / entry</div></div>
+            <div class="m"><div class="v">$${(f.avg_capital_deployed_usd??0).toFixed(2)}</div><div class="k">Avg deployed / trade</div></div>
+            <div class="m"><div class="v ${f.avg_net_per_trade_usd>=0?'pos':'neg'}">${f.avg_net_per_trade_usd==null?'—':money(f.avg_net_per_trade_usd)}</div><div class="k">Avg net / trade</div></div>
+            <div class="m" title="Net paper PnL divided by gross cash deployed across resolved entries. Capital may be reused across sequential trades, so this is a capital-efficiency metric, not a portfolio-period return."><div class="v ${f.net_per_100_deployed>=0?'pos':'neg'}">${f.net_per_100_deployed==null?'—':money(f.net_per_100_deployed)}</div><div class="k">Net per $100 deployed</div></div>
+          </div></div>` : ''}
+      </div>
+      <div class="more"><a href="candidate_${id}.html">Deep dive →</a></div>
+    </div>`;
+  };
+  const activeIds = D.active_candidates || order;
+  const keep = ids => order.filter(id => ids.includes(id));
+  document.getElementById('cards').innerHTML =
+    keep(activeIds).map(id => cardHtml(id, D.candidates[id])).join('');
+  const setTxt = (id,v) => { const e=document.getElementById(id); if(e&&v!=null) e.textContent=v; };
+  setTxt('hd-obs',   D.headline.synchronized_observations);
+  setTxt('hd-feat',  D.headline.engineered_features);
+  setTxt('hd-specs', (D.headline.specifications_attempted||0).toLocaleString());
+  if (D.btc_section) {
+    setTxt('btc-outcome', D.btc_section.outcome);
+    setTxt('btc-att',  (D.btc_section.attempted_specs||0).toLocaleString());
+    setTxt('btc-ok',   (D.btc_section.successful_specs||0).toLocaleString());
+    const pm = /\((\d+) days, ([\d,]+) contracts\)/.exec(D.btc_section.panel||'');
+    if (pm) { setTxt('btc-days', pm[1]+'d'); setTxt('btc-ctr', pm[2]); }
+  }
+  const hdActive = document.getElementById('hd-active');
+  if (hdActive) hdActive.textContent = activeIds.length;
+});
+</script>
+</body>
+</html>
