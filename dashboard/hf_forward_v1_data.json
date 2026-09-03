@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-09-03T08:22:22.073720Z",
+ "generated_utc": "2026-09-03T08:57:50.609828Z",
  "source_latest_utc": "2026-09-02T14:00:00Z",
  "stale_after_hours": 24,
  "warn_after_hours": 36,
@@ -53,7 +53,7 @@
     "sharpe_ann": 1.47,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -125.54,
-    "days_live": 42.0,
+    "days_live": 42.1,
     "inception_utc": "2026-07-23T07:19:28.695379Z",
     "latest_update_utc": "2026-08-26T14:02:05.203754Z",
     "positive_day_pct": 48.6,
