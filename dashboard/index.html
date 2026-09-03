@@ -80,10 +80,19 @@ fetch('hf_forward_v1_data.json').then(r=>r.json()).then(D=>{
   document.getElementById('sharpe-note').textContent = D.sharpe_note + ' ';
   // freshness policy: label the refresh time; flag stale snapshots explicitly
   const gen = new Date(D.generated_utc);
-  const ageH = (Date.now() - gen.getTime()) / 3.6e6;
+  // Age against the newest UNDERLYING decision, not against when this
+  // aggregate was rebuilt. Regenerating from stale paper data must not
+  // clear the warning. Falls back to generated_utc for older payloads.
+  const freshnessTs = D.source_latest_utc || D.generated_utc;
+  const ageH = (Date.now() - new Date(freshnessTs).getTime()) / 3.6e6;
   const fmt = gen.toISOString().slice(0,16).replace('T',' ') + ' UTC';
   document.getElementById('refreshed').textContent = 'Data refreshed: ' + fmt;
-  document.getElementById('gen-ts').textContent = 'Data refreshed ' + fmt;
+  // Show both clocks. "Refreshed" is when the aggregate was rebuilt; "newest
+  // observation" is how current the underlying paper data actually is. Showing
+  // only the first is how a rebuild of stale data looks fresh.
+  const srcFmt = new Date(freshnessTs).toISOString().slice(0,16).replace('T',' ') + ' UTC';
+  document.getElementById('gen-ts').textContent =
+    'Data refreshed ' + fmt + ' · newest observation ' + srcFmt;
   if (D.headline) {
     document.getElementById('hd-scale').textContent = D.headline.contracts_per_entry ?? '—';
     document.getElementById('hd-scale-k').textContent = D.headline.contracts_per_entry_label || 'Contracts / entry';
@@ -93,11 +102,19 @@ fetch('hf_forward_v1_data.json').then(r=>r.json()).then(D=>{
     b.style.display = 'block';
     b.style.cssText = 'display:block;border:1px solid #e7b24a;background:rgba(231,178,74,.12);'
       + 'color:#e7b24a;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:.85em';
-    b.textContent = '⚠ Data snapshot stale — regenerated ' + Math.floor(ageH)
-      + 'h ago (threshold ' + (D.stale_after_hours || 24) + 'h). Forward metrics below may not be current.';
+    b.textContent = '⚠ Paper data stale — newest observation ' + Math.floor(ageH)
+      + 'h old (threshold ' + (D.stale_after_hours || 24) + 'h). Forward metrics below may not be current.';
   }
-  const order = ['xvfv_cheap_yes_hf_v0','hfw017_spx_eth_v0','hfw014_rpq_btc_v0'];
-  const cls = {xvfv_cheap_yes_hf_v0:'cand-a', hfw017_spx_eth_v0:'cand-b', hfw014_rpq_btc_v0:'cand-c'};
+  // Ordering and card classes come from the sanitized payload, never from a
+  // hardcoded list. A static list does not notice a suspension: it is why a
+  // withdrawn candidate's id stayed in this page's source after its data and
+  // page were correctly removed.
+  const order = (D.active_candidates && D.active_candidates.length)
+    ? D.active_candidates
+    : Object.keys(D.candidates || {});
+  const PALETTE = ['cand-a','cand-b','cand-c','cand-d','cand-e'];
+  const cls = {};
+  order.forEach((id, i) => { cls[id] = PALETTE[i % PALETTE.length]; });
   const money = v => (v>=0?'+':'−') + '$' + Math.abs(v).toFixed(2);
   const cardHtml = (id,c) => {
     const f=c.forward, r=c.research_oof, p=c.replay;

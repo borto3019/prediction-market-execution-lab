@@ -1,23 +1,25 @@
 {
- "generated_utc": "2026-08-26T15:28:09.409031Z",
+ "generated_utc": "2026-09-03T08:22:22.073720Z",
+ "source_latest_utc": "2026-09-02T14:00:00Z",
  "stale_after_hours": 24,
+ "warn_after_hours": 36,
  "status_badge": "Fresh-forward paper validation",
  "paper_only": true,
  "status_line": "Paper research candidate \u2014 fresh-forward validation. Evaluated prospectively in simulation; no real orders.",
  "headline": {
-  "synchronized_observations": "1.90M",
+  "synchronized_observations": "2.63M",
   "engineered_features": 181,
-  "specifications_attempted": 4820,
+  "specifications_attempted": 5024,
   "eth_paper_candidates": 2,
   "contracts_per_entry": "10",
   "contracts_per_entry_label": "Contracts / entry"
  },
  "btc_section": {
-  "attempted_specs": 2410,
-  "successful_specs": 2236,
-  "panel": "Full 5-second high-frequency BTC panel (71 days, 6,645 contracts)",
+  "attempted_specs": 2512,
+  "successful_specs": 2339,
+  "panel": "Full 5-second high-frequency BTC panel (93 days, 8,730 contracts)",
   "outcome": "No BTC candidate has met the frozen promotion threshold in any cycle to date: the global search-adjustment p-value remains 1.00, meaning every apparent BTC result is within search noise.",
-  "research_cycle": "hf_weekly_2026-08-03"
+  "research_cycle": "hf_weekly_2026-08-26"
  },
  "sharpe_note": "Sharpe = mean/std of daily net PnL \u00d7 \u221a365 (repository canonical convention); live value shown only after \u22655 resolved daily observations.",
  "candidates": {
@@ -51,7 +53,7 @@
     "sharpe_ann": 1.47,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -125.54,
-    "days_live": 34.3,
+    "days_live": 42.0,
     "inception_utc": "2026-07-23T07:19:28.695379Z",
     "latest_update_utc": "2026-08-26T14:02:05.203754Z",
     "positive_day_pct": 48.6,
@@ -305,7 +307,7 @@
     "sharpe_ann": 1.86,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -56.24,
-    "days_live": 19.9,
+    "days_live": 27.6,
     "inception_utc": "2026-08-06T18:16:50.061989Z",
     "latest_update_utc": "2026-08-26T13:02:03.876371Z",
     "positive_day_pct": 61.9,

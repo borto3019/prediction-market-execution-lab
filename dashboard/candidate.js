@@ -3,7 +3,10 @@
    identity color per page; crosshair tooltip on lines, per-bar tooltip on bars;
    explicit empty states while the forward ledger has no resolved observations. */
 (function () {
-  const COLORS = { xvfv_cheap_yes_hf_v0: '#5d6fe0', hfw017_spx_eth_v0: '#2e9e7a', hfw014_rpq_btc_v0: '#c07a2e' };
+  // Colours are assigned by position in the sanitized payload rather than
+  // by a hardcoded id map, so a withdrawn candidate leaves no trace here.
+  const PALETTE = ['#5d6fe0', '#2e9e7a', '#c07a2e', '#9b59b6', '#c0392b'];
+  const colorFor = (id, ids) => PALETTE[Math.max(0, (ids || []).indexOf(id)) % PALETTE.length];
   const money = v => (v >= 0 ? '+' : '−') + '$' + Math.abs(v).toFixed(2);
   const el = id => document.getElementById(id);
 
@@ -60,7 +63,7 @@
 
   fetch('hf_forward_v1_data.json').then(r => r.json()).then(D => {
     const c = D.candidates[window.CAND_ID];
-    const f = c.forward, color = COLORS[window.CAND_ID];
+    const f = c.forward, color = colorFor(window.CAND_ID, (D && (D.active_candidates || Object.keys(D.candidates || {}))) || []);
     document.title = c.code + ' — ' + c.title + ' — WSS HF';
     el('c-title').innerHTML = `${c.title} <span class="code">${c.code}</span>`;
     el('c-mech').textContent = c.mechanism;
