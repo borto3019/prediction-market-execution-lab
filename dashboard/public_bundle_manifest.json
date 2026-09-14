@@ -3,8 +3,8 @@
  "source_root": "public_site",
  "file_count": 10,
  "total_bytes": 471753,
- "bundle_sha256": "772e27a3f9bfc55af0539814054f9b2998d75605fb8d557145a63cea0f56131b",
- "content_sha256": "047b319795d247f8240793ab404ffd75f1050273ddb14b8a743554f8a3a2b833",
+ "bundle_sha256": "5ac1514351f45c418d24109f886597c25036033956a031f5dc656bcc2492c324",
+ "content_sha256": "b9c5ae03659dc0643d18d02c0f12802a06a69da36113684577d0b0b54bd2b74e",
  "sanitizer_passed": true,
  "allowlist_entries_without_files": [],
  "files": [
@@ -54,7 +54,7 @@
    "path": "hf_forward_v1_data.json",
    "source": "hf_forward_v1/hf_forward_v1_data.json",
    "bytes": 10641,
-   "sha256": "d1017295a62fedce459aae0db180203235d42414ecd480c1a09c92181ecdb0c0"
+   "sha256": "dbe908b07072b9e7cbc32130d8f3d903dc4906498b710e0292d1457ca4bd9ceb"
   },
   {
    "path": "index.html",
