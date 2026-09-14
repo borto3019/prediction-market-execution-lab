@@ -162,9 +162,15 @@ pip install pandas pytest && python -m pytest tests/ -q     # 37 tests
 
 Live paper-forward monitoring: **https://borto3019.github.io/prediction-market-execution-lab/**
 
-Shows the two ETH paper candidates and the BTC null result, refreshed from the
-private pipeline. Sanitized: aggregates only, no strategy parameters, no raw
-data.
+Shows the active BTC and ETH paper candidates alongside two experimental
+forward shadows, refreshed from the private pipeline. Sanitized: aggregates
+only, no strategy parameters, no raw data.
+
+Two frozen DSA hypotheses are being evaluated prospectively on unseen BTC and
+ETH prediction-market contracts. Historical research and forward-paper results
+are reported separately, and a shadow's forward results stay hidden until it
+reaches a review threshold fixed in advance — so the outcome cannot influence
+when it is first read.
 
 ---
 
