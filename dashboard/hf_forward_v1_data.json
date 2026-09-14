@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-09-14T07:03:44.537980Z",
- "source_latest_utc": "2026-09-03T14:15:00Z",
+ "generated_utc": "2026-09-14T07:46:50.413480Z",
+ "source_latest_utc": "2026-09-14T07:32:05.038982Z",
  "stale_after_hours": 24,
  "warn_after_hours": 36,
  "status_badge": "Fresh-forward paper validation",
@@ -44,21 +44,21 @@
    },
    "ablation_note": "Removing the cross-venue input channel eliminates the edge entirely; sparse (per-decision) sampling cannot detect the signal.",
    "forward": {
-    "cum_pnl_usd": 49.85,
-    "resolved_trades": 778,
+    "cum_pnl_usd": -21.33,
+    "resolved_trades": 1283,
     "contracts_per_entry": 10,
-    "avg_capital_deployed_usd": 4.34,
-    "avg_net_per_trade_usd": 0.06,
-    "net_per_100_deployed": 1.47,
-    "sharpe_ann": 1.47,
+    "avg_capital_deployed_usd": 4.61,
+    "avg_net_per_trade_usd": -0.02,
+    "net_per_100_deployed": -0.36,
+    "sharpe_ann": -0.38,
     "sharpe_min_days": 5,
-    "max_drawdown_usd": -125.54,
-    "days_live": 53.0,
-    "inception_utc": "2026-07-23T07:19:28.695379Z",
-    "latest_update_utc": "2026-08-26T14:02:05.203754Z",
-    "positive_day_pct": 48.6,
-    "avg_entry_price": 0.421,
-    "avg_fee_usd": 0.131,
+    "max_drawdown_usd": -186.25,
+    "days_live": 52.9,
+    "inception_utc": "2026-07-23T09:27:08.652998Z",
+    "latest_update_utc": "2026-09-14T07:32:03.745004Z",
+    "positive_day_pct": 42.6,
+    "avg_entry_price": 0.447,
+    "avg_fee_usd": 0.134,
     "daily_series": [
      {
       "date": "2026-07-23",
@@ -266,16 +266,268 @@
      },
      {
       "date": "2026-08-26",
-      "daily_pnl": 10.47,
-      "cum_pnl": 49.85,
-      "drawdown": -115.07
+      "daily_pnl": 7.07,
+      "cum_pnl": 46.45,
+      "drawdown": -118.47
+     },
+     {
+      "date": "2026-08-27",
+      "daily_pnl": -4.73,
+      "cum_pnl": 41.72,
+      "drawdown": -123.2
+     },
+     {
+      "date": "2026-08-28",
+      "daily_pnl": 29.45,
+      "cum_pnl": 71.17,
+      "drawdown": -93.75
+     },
+     {
+      "date": "2026-08-29",
+      "daily_pnl": -13.61,
+      "cum_pnl": 57.56,
+      "drawdown": -107.36
+     },
+     {
+      "date": "2026-08-30",
+      "daily_pnl": -3.21,
+      "cum_pnl": 54.35,
+      "drawdown": -110.57
+     },
+     {
+      "date": "2026-08-31",
+      "daily_pnl": 7.31,
+      "cum_pnl": 61.66,
+      "drawdown": -103.26
+     },
+     {
+      "date": "2026-09-01",
+      "daily_pnl": 21.46,
+      "cum_pnl": 83.12,
+      "drawdown": -81.79
+     },
+     {
+      "date": "2026-09-02",
+      "daily_pnl": -6.55,
+      "cum_pnl": 76.57,
+      "drawdown": -88.34
+     },
+     {
+      "date": "2026-09-03",
+      "daily_pnl": 7.63,
+      "cum_pnl": 84.2,
+      "drawdown": -80.71
+     },
+     {
+      "date": "2026-09-04",
+      "daily_pnl": -39.5,
+      "cum_pnl": 44.7,
+      "drawdown": -120.21
+     },
+     {
+      "date": "2026-09-05",
+      "daily_pnl": -24.63,
+      "cum_pnl": 20.07,
+      "drawdown": -144.84
+     },
+     {
+      "date": "2026-09-06",
+      "daily_pnl": 40.57,
+      "cum_pnl": 60.64,
+      "drawdown": -104.28
+     },
+     {
+      "date": "2026-09-07",
+      "daily_pnl": -16.95,
+      "cum_pnl": 43.69,
+      "drawdown": -121.23
+     },
+     {
+      "date": "2026-09-08",
+      "daily_pnl": -36.12,
+      "cum_pnl": 7.57,
+      "drawdown": -157.34
+     },
+     {
+      "date": "2026-09-09",
+      "daily_pnl": 28.61,
+      "cum_pnl": 36.18,
+      "drawdown": -128.73
+     },
+     {
+      "date": "2026-09-10",
+      "daily_pnl": -9.34,
+      "cum_pnl": 26.84,
+      "drawdown": -138.08
+     },
+     {
+      "date": "2026-09-11",
+      "daily_pnl": -20.24,
+      "cum_pnl": 6.6,
+      "drawdown": -158.32
+     },
+     {
+      "date": "2026-09-12",
+      "daily_pnl": -3.78,
+      "cum_pnl": 2.82,
+      "drawdown": -162.1
+     },
+     {
+      "date": "2026-09-13",
+      "daily_pnl": -22.47,
+      "cum_pnl": -19.65,
+      "drawdown": -184.57
+     },
+     {
+      "date": "2026-09-14",
+      "daily_pnl": -1.68,
+      "cum_pnl": -21.33,
+      "drawdown": -186.25
      }
     ],
     "state": "live"
    },
    "lifecycle": "active",
    "status": "Active paper candidate",
-   "entries_stopped": false
+   "entries_stopped": false,
+   "deep_dive": true
+  },
+  "hfw018_dsa_btc_v0": {
+   "code": "HFW-018",
+   "title": "Depth-Slope Asymmetry",
+   "asset": "BTC",
+   "side": "YES",
+   "window": "2\u20137 min to expiry",
+   "tier": "experimental",
+   "governance_version": "v2",
+   "required_label": "Experimental prospective paper validation \u2014 not validated alpha.",
+   "mechanism": "Enters YES when spot already sits beyond the strike and the Kraken book is shaped so that resting size builds faster behind the bid than behind the ask \u2014 a depth-geometry signal, independent of the cross-venue dislocation the active strategies use.",
+   "research_oof": {
+    "pnl_usd": 87.88,
+    "trades": 875,
+    "blocks_positive": "5/7"
+   },
+   "ablation_note": "Removing the cross-venue channel leaves this rule completely unchanged, which is what distinguishes it from the active candidates.",
+   "forward": {
+    "resolved_trades": 55,
+    "days_live": 8.6,
+    "inception_utc": "2026-09-05T16:55:12.686390Z",
+    "latest_update_utc": "2026-09-14T06:17:05.436258Z",
+    "state": "live"
+   },
+   "lifecycle": "active",
+   "status": "Active paper candidate",
+   "entries_stopped": false,
+   "deep_dive": false,
+   "performance_visible": false,
+   "blind_status": "blinded; awaiting resolved_trades 55/100, unique_contracts 55/100",
+   "lifecycle_status": "EXPERIMENTAL_FORWARD_SHADOW",
+   "checkpoint_status": "PRE_EARLY"
+  },
+  "hfw018_dsa_eth_v0": {
+   "code": "HFW-018",
+   "title": "Depth-Slope Asymmetry",
+   "asset": "ETH",
+   "side": "YES",
+   "window": "2\u20137 min to expiry",
+   "tier": "experimental",
+   "governance_version": "v2",
+   "required_label": "Experimental prospective paper validation \u2014 not validated alpha.",
+   "mechanism": "Enters YES when spot already sits beyond the strike and the Kraken book is shaped so that resting size builds faster behind the bid than behind the ask \u2014 a depth-geometry signal, independent of the cross-venue dislocation the active strategies use.",
+   "research_oof": {
+    "pnl_usd": 197.49,
+    "trades": 2315,
+    "blocks_positive": "6/7"
+   },
+   "ablation_note": "Removing the cross-venue channel leaves this rule completely unchanged, which is what distinguishes it from the active candidates.",
+   "forward": {
+    "cum_pnl_usd": 58.74,
+    "resolved_trades": 374,
+    "contracts_per_entry": 10,
+    "avg_capital_deployed_usd": 8.51,
+    "avg_net_per_trade_usd": 0.16,
+    "net_per_100_deployed": 1.85,
+    "sharpe_ann": 8.16,
+    "sharpe_min_days": 5,
+    "max_drawdown_usd": -20.41,
+    "days_live": 8.7,
+    "inception_utc": "2026-09-05T14:54:51.962184Z",
+    "latest_update_utc": "2026-09-14T07:32:03.142284Z",
+    "positive_day_pct": 80.0,
+    "avg_entry_price": 0.842,
+    "avg_fee_usd": 0.091,
+    "daily_series": [
+     {
+      "date": "2026-09-05",
+      "daily_pnl": 9.83,
+      "cum_pnl": 9.83,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-09-06",
+      "daily_pnl": 3.05,
+      "cum_pnl": 12.88,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-09-07",
+      "daily_pnl": 12.9,
+      "cum_pnl": 25.78,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-09-08",
+      "daily_pnl": -20.41,
+      "cum_pnl": 5.37,
+      "drawdown": -20.41
+     },
+     {
+      "date": "2026-09-09",
+      "daily_pnl": 1.38,
+      "cum_pnl": 6.75,
+      "drawdown": -19.03
+     },
+     {
+      "date": "2026-09-10",
+      "daily_pnl": 31.54,
+      "cum_pnl": 38.29,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-09-11",
+      "daily_pnl": 6.33,
+      "cum_pnl": 44.61,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-09-12",
+      "daily_pnl": 15.97,
+      "cum_pnl": 60.58,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-09-13",
+      "daily_pnl": -6.64,
+      "cum_pnl": 53.94,
+      "drawdown": -6.64
+     },
+     {
+      "date": "2026-09-14",
+      "daily_pnl": 4.8,
+      "cum_pnl": 58.74,
+      "drawdown": -1.84
+     }
+    ],
+    "state": "live"
+   },
+   "lifecycle": "active",
+   "status": "Active paper candidate",
+   "entries_stopped": false,
+   "deep_dive": false,
+   "performance_visible": true,
+   "blind_status": "EARLY_DIAGNOSTIC satisfied",
+   "lifecycle_status": "EXPERIMENTAL_FORWARD_SHADOW",
+   "checkpoint_status": "FORMAL_FORWARD_REVIEW"
   },
   "hfw014_rpq_btc_v0": {
    "code": "HFW-014",
@@ -298,21 +550,21 @@
    },
    "ablation_note": "Fresh-forward paper validation. The broader BTC search remains globally non-significant; this rule is being monitored prospectively.",
    "forward": {
-    "cum_pnl_usd": 35.34,
-    "resolved_trades": 413,
+    "cum_pnl_usd": 30.0,
+    "resolved_trades": 745,
     "contracts_per_entry": 10,
-    "avg_capital_deployed_usd": 5.97,
-    "avg_net_per_trade_usd": 0.09,
-    "net_per_100_deployed": 1.43,
-    "sharpe_ann": 1.86,
+    "avg_capital_deployed_usd": 6.47,
+    "avg_net_per_trade_usd": 0.04,
+    "net_per_100_deployed": 0.62,
+    "sharpe_ann": 0.84,
     "sharpe_min_days": 5,
-    "max_drawdown_usd": -56.24,
-    "days_live": 38.5,
+    "max_drawdown_usd": -84.31,
+    "days_live": 38.6,
     "inception_utc": "2026-08-06T18:16:50.061989Z",
-    "latest_update_utc": "2026-08-26T13:02:03.876371Z",
-    "positive_day_pct": 61.9,
-    "avg_entry_price": 0.584,
-    "avg_fee_usd": 0.124,
+    "latest_update_utc": "2026-09-14T07:32:05.038982Z",
+    "positive_day_pct": 57.5,
+    "avg_entry_price": 0.635,
+    "avg_fee_usd": 0.122,
     "daily_series": [
      {
       "date": "2026-08-06",
@@ -436,20 +688,141 @@
      },
      {
       "date": "2026-08-26",
-      "daily_pnl": -19.95,
-      "cum_pnl": 35.34,
-      "drawdown": -36.07
+      "daily_pnl": -14.34,
+      "cum_pnl": 40.96,
+      "drawdown": -30.45
+     },
+     {
+      "date": "2026-08-27",
+      "daily_pnl": -29.12,
+      "cum_pnl": 11.84,
+      "drawdown": -59.57
+     },
+     {
+      "date": "2026-08-28",
+      "daily_pnl": 5.4,
+      "cum_pnl": 17.24,
+      "drawdown": -54.17
+     },
+     {
+      "date": "2026-08-29",
+      "daily_pnl": 19.03,
+      "cum_pnl": 36.27,
+      "drawdown": -35.14
+     },
+     {
+      "date": "2026-08-30",
+      "daily_pnl": 26.91,
+      "cum_pnl": 63.18,
+      "drawdown": -8.23
+     },
+     {
+      "date": "2026-08-31",
+      "daily_pnl": 24.99,
+      "cum_pnl": 88.17,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-09-01",
+      "daily_pnl": -33.76,
+      "cum_pnl": 54.41,
+      "drawdown": -33.76
+     },
+     {
+      "date": "2026-09-02",
+      "daily_pnl": -21.96,
+      "cum_pnl": 32.45,
+      "drawdown": -55.72
+     },
+     {
+      "date": "2026-09-03",
+      "daily_pnl": -2.03,
+      "cum_pnl": 30.42,
+      "drawdown": -57.75
+     },
+     {
+      "date": "2026-09-04",
+      "daily_pnl": 3.9,
+      "cum_pnl": 34.32,
+      "drawdown": -53.85
+     },
+     {
+      "date": "2026-09-05",
+      "daily_pnl": 2.76,
+      "cum_pnl": 37.08,
+      "drawdown": -51.09
+     },
+     {
+      "date": "2026-09-06",
+      "daily_pnl": 3.48,
+      "cum_pnl": 40.56,
+      "drawdown": -47.61
+     },
+     {
+      "date": "2026-09-07",
+      "daily_pnl": -16.83,
+      "cum_pnl": 23.73,
+      "drawdown": -64.44
+     },
+     {
+      "date": "2026-09-08",
+      "daily_pnl": -8.33,
+      "cum_pnl": 15.4,
+      "drawdown": -72.77
+     },
+     {
+      "date": "2026-09-09",
+      "daily_pnl": -5.07,
+      "cum_pnl": 10.33,
+      "drawdown": -77.84
+     },
+     {
+      "date": "2026-09-10",
+      "daily_pnl": -6.47,
+      "cum_pnl": 3.86,
+      "drawdown": -84.31
+     },
+     {
+      "date": "2026-09-11",
+      "daily_pnl": 24.96,
+      "cum_pnl": 28.82,
+      "drawdown": -59.35
+     },
+     {
+      "date": "2026-09-12",
+      "daily_pnl": 1.76,
+      "cum_pnl": 30.58,
+      "drawdown": -57.59
+     },
+     {
+      "date": "2026-09-13",
+      "daily_pnl": -7.4,
+      "cum_pnl": 23.18,
+      "drawdown": -64.99
+     },
+     {
+      "date": "2026-09-14",
+      "daily_pnl": 6.82,
+      "cum_pnl": 30.0,
+      "drawdown": -58.17
      }
     ],
     "state": "live"
    },
    "lifecycle": "active",
    "status": "Active paper candidate",
-   "entries_stopped": false
+   "entries_stopped": false,
+   "deep_dive": true
   }
  },
  "active_candidates": [
   "xvfv_cheap_yes_hf_v0",
   "hfw014_rpq_btc_v0"
- ]
+ ],
+ "experimental_candidates": [
+  "hfw018_dsa_btc_v0",
+  "hfw018_dsa_eth_v0"
+ ],
+ "experimental_label": "Experimental prospective paper validation \u2014 not validated alpha.",
+ "experimental_note": "Governance v2 experimental forward shadows. Historical evidence is shown separately and is never combined with forward results; the global search adjustment for these hypotheses remains non-significant."
 }

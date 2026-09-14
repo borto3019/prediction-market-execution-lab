@@ -33,6 +33,12 @@
   <div class="cards" id="cards"></div>
 </section>
 
+<section id="experimental-section" style="display:none">
+  <h3>Experimental Forward Shadows</h3>
+  <p class="note" id="experimental-note"></p>
+  <div class="cards" id="exp-cards"></div>
+</section>
+
 
 <section>
   <h3>BTC High-Frequency Search</h3>
@@ -156,13 +162,64 @@ fetch('hf_forward_v1_data.json').then(r=>r.json()).then(D=>{
             <div class="m" title="Net paper PnL divided by gross cash deployed across resolved entries. Capital may be reused across sequential trades, so this is a capital-efficiency metric, not a portfolio-period return."><div class="v ${f.net_per_100_deployed>=0?'pos':'neg'}">${f.net_per_100_deployed==null?'—':money(f.net_per_100_deployed)}</div><div class="k">Net per $100 deployed</div></div>
           </div></div>` : ''}
       </div>
-      <div class="more"><a href="candidate_${id}.html">Deep dive →</a></div>
+      ${c.deep_dive ? `<div class="more"><a href="candidate_${id}.html">Deep dive →</a></div>` : ''}
     </div>`;
   };
   const activeIds = D.active_candidates || order;
   const keep = ids => order.filter(id => ids.includes(id));
   document.getElementById('cards').innerHTML =
     keep(activeIds).map(id => cardHtml(id, D.candidates[id])).join('');
+  // Experimental forward shadows. These are EXPERIMENTS, not strategies:
+  // a blinded shadow shows operational metadata only, and historical research
+  // evidence is kept in its own block so it can never read as forward results.
+  const expIds = D.experimental_candidates || [];
+  if (expIds.length) {
+    const sec = document.getElementById('experimental-section');
+    sec.style.display = '';
+    document.getElementById('experimental-note').textContent =
+      (D.experimental_label || '') + ' ' + (D.experimental_note || '');
+    const expCard = (id) => {
+      const c = D.candidates[id] || {}; const f = c.forward || {};
+      const vis = c.performance_visible === true;
+      const r = c.research_oof || {};
+      return `
+      <div class="card">
+        <div class="chead">
+          <div><div class="ctitle">${c.title||id}</div>
+               <div class="csub">${c.code||''} · ${c.asset||''} · ${c.side||''} · ${c.window||''}</div></div>
+          <div class="badge">${c.lifecycle_status||'EXPERIMENTAL_FORWARD_SHADOW'}</div>
+        </div>
+        <p class="mech">${c.mechanism||''}</p>
+        <div class="mgroup"><div class="glabel">Prospective paper forward</div>
+          <div class="mrow">
+            <div class="m"><div class="v">${f.resolved_trades??'—'}</div><div class="k">Resolved trades</div></div>
+            <div class="m"><div class="v">${f.days_live??'—'}</div><div class="k">Days live</div></div>
+            <div class="m"><div class="v mono" style="font-size:.8em">${(f.inception_utc||'—').slice(0,10)}</div><div class="k">Inception (UTC)</div></div>
+            <div class="m"><div class="v mono" style="font-size:.8em">${c.checkpoint_status||'—'}</div><div class="k">Checkpoint reached</div></div>
+          </div>
+          ${vis ? `<div class="mrow">
+            <div class="m"><div class="v ${f.cum_pnl_usd>=0?'pos':'neg'}">${f.cum_pnl_usd==null?'—':money(f.cum_pnl_usd)}</div><div class="k">Forward paper PnL</div></div>
+            <div class="m"><div class="v ${f.avg_net_per_trade_usd>=0?'pos':'neg'}">${f.avg_net_per_trade_usd==null?'—':money(f.avg_net_per_trade_usd)}</div><div class="k">Avg net / trade</div></div>
+            <div class="m"><div class="v neg">${f.max_drawdown_usd==null?'—':money(f.max_drawdown_usd)}</div><div class="k">Max drawdown</div></div>
+            <div class="m"><div class="v">${f.latest_update_utc?String(f.latest_update_utc).slice(0,16).replace('T',' '):'—'}</div><div class="k">Latest update (UTC)</div></div>
+          </div>`
+          : `<p class="note">Prospective results are withheld until this experiment reaches its
+             pre-registered review threshold, so the outcome cannot influence when it is first read.
+             Operational progress only: ${c.blind_status||''}.</p>`}
+        </div>
+        <div class="mgroup"><div class="glabel">Historical research (separate evidence, never combined)</div>
+          <div class="mrow">
+            <div class="m"><div class="v">${r.pnl_usd==null?'—':money(r.pnl_usd)}</div><div class="k">Research OOF PnL</div></div>
+            <div class="m"><div class="v">${r.trades??'—'}</div><div class="k">Research trades</div></div>
+            <div class="m"><div class="v">${r.blocks_positive??'—'}</div><div class="k">Positive blocks</div></div>
+          </div></div>
+        <p class="note">${c.required_label||''}</p>
+        ${c.deep_dive ? `<div class="more"><a href="candidate_${id}.html">Deep dive →</a></div>` : ''}
+      </div>`;
+    };
+    document.getElementById('exp-cards').innerHTML = expIds.map(expCard).join('');
+  }
+
   const setTxt = (id,v) => { const e=document.getElementById(id); if(e&&v!=null) e.textContent=v; };
   setTxt('hd-obs',   D.headline.synchronized_observations);
   setTxt('hd-feat',  D.headline.engineered_features);
