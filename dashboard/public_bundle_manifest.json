@@ -2,9 +2,9 @@
  "contract_version": 1,
  "source_root": "public_site",
  "file_count": 10,
- "total_bytes": 484739,
- "bundle_sha256": "d437aa3587990266f78c97255b22b7476bdaabf3ceec0ae64a61789a0c498e80",
- "content_sha256": "ea430beed009ddadffc2cf552a192df109873cff039ce58784af16bd483b4b17",
+ "total_bytes": 485092,
+ "bundle_sha256": "69f33e5084f70b8c7abf3ccb5ff5d3de72e1878fda477abbc803fd92ec2ae58d",
+ "content_sha256": "71d3e1aada728216dc20f7315187a3b0b0a4a60c7b676df9dce40aac927a4384",
  "sanitizer_passed": true,
  "allowlist_entries_without_files": [],
  "files": [
@@ -53,8 +53,8 @@
   {
    "path": "hf_forward_v1_data.json",
    "source": "hf_forward_v1/hf_forward_v1_data.json",
-   "bytes": 19807,
-   "sha256": "b3da38bec6fdcc633fd1edbb5753ccae5b9480d235321a628806c7fd60fdd17e"
+   "bytes": 20160,
+   "sha256": "3bc44745a34df8f25f6b2041977b5faaaaaddf17543119f92f2aedbc3458628b"
   },
   {
    "path": "index.html",
