@@ -108,11 +108,14 @@ VWAP. `src/execution/orderbook_vwap.py` is the model used to make that call.
 1.90M synchronized cross-venue observations and 181 engineered features over a
 71-day, 6,645-contract BTC panel at 5-second resolution.
 
-**4. Two ETH candidates in live paper-forward validation.**
-Evaluated prospectively against a frozen specification, with promotion and
-suspension governed by rules fixed before the evaluation window opened. A
-candidate that fails those rules is suspended mechanically rather than by
-judgement.
+**4. Four candidates in live paper-forward validation.**
+Two active paper candidates, one per asset, alongside two experimental forward
+shadows. Each is evaluated prospectively against a frozen specification, with
+promotion and suspension governed by rules fixed before the evaluation window
+opened. A candidate that fails those rules is suspended mechanically rather than
+by judgement, and two have been retired that way. An experimental shadow's
+forward results stay hidden until it has accumulated enough independent evidence
+to be reviewed under those rules.
 
 Figures and the live monitoring view are in the dashboard linked below.
 
@@ -182,14 +185,18 @@ Being explicit about what each number is:
   venue APIs.
 - **Simulated execution** — every fill price shown. Orders are walked against the
   book that was standing at decision time. No real orders have been placed.
-- **Paper-forward** — the two ETH candidates. Evaluated prospectively against a
-  frozen specification, but still simulation, not money.
+- **Paper-forward** — the active BTC and ETH candidates plus the two experimental
+  shadows. Evaluated prospectively against a frozen specification, but still
+  simulation, not money.
 - **Historical / in-sample** — the specification search. Explicitly not evidence
   of edge; it is the input to the multiple-testing correction, not the output.
 
 No claim is made that this system has demonstrated alpha. The BTC result is a
-null, and the ETH candidates are under evaluation with an outcome not yet
-established.
+null, and the candidates in forward validation have outcomes not yet
+established. The most recent pre-registered mechanism search
+(cycle `hf_weekly_2026-09-14`, six new families over a 19-day window) produced
+no new candidate on either asset; two of the six were genuinely exercised and
+rejected, while four fired too rarely to be evaluated at all.
 
 ---
 
