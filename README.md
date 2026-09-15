@@ -193,10 +193,10 @@ Being explicit about what each number is:
 
 No claim is made that this system has demonstrated alpha. The BTC result is a
 null, and the candidates in forward validation have outcomes not yet
-established. The most recent pre-registered mechanism search
-(cycle `hf_weekly_2026-09-14`, six new families over a 19-day window) produced
-no new candidate on either asset; two of the six were genuinely exercised and
-rejected, while four fired too rarely to be evaluated at all.
+established. The most recent pre-registered mechanism search — six new
+candidate families over a fresh 19-day window — produced no new candidate on
+either asset; two of the six were genuinely exercised and rejected, while four
+fired too rarely to be evaluated at all.
 
 ---
 
