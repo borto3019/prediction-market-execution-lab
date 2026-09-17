@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-09-16T07:06:54.864747Z",
+ "generated_utc": "2026-09-17T07:03:52.032163Z",
  "source_latest_utc": "2026-09-15T12:17:06.150768Z",
  "stale_after_hours": 24,
  "warn_after_hours": 36,
@@ -53,7 +53,7 @@
     "sharpe_ann": -0.4,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -187.49,
-    "days_live": 54.9,
+    "days_live": 55.9,
     "inception_utc": "2026-07-23T09:27:08.652998Z",
     "latest_update_utc": "2026-09-15T12:02:01.135377Z",
     "positive_day_pct": 43.6,
@@ -416,7 +416,7 @@
    "ablation_note": "Removing the cross-venue channel leaves this rule completely unchanged, which is what distinguishes it from the active candidates.",
    "forward": {
     "resolved_trades": 64,
-    "days_live": 10.6,
+    "days_live": 11.6,
     "inception_utc": "2026-09-05T16:55:12.686390Z",
     "latest_update_utc": "2026-09-15T06:02:03.739099Z",
     "state": "live"
@@ -456,7 +456,7 @@
     "sharpe_ann": 5.3,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -20.41,
-    "days_live": 10.7,
+    "days_live": 11.7,
     "inception_utc": "2026-09-05T14:54:51.962184Z",
     "latest_update_utc": "2026-09-15T12:17:06.150768Z",
     "positive_day_pct": 72.7,
@@ -571,7 +571,7 @@
     "sharpe_ann": 1.16,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -84.31,
-    "days_live": 40.5,
+    "days_live": 41.5,
     "inception_utc": "2026-08-06T18:16:50.061989Z",
     "latest_update_utc": "2026-09-15T12:02:03.431816Z",
     "positive_day_pct": 58.5,
