@@ -108,14 +108,22 @@ VWAP. `src/execution/orderbook_vwap.py` is the model used to make that call.
 1.90M synchronized cross-venue observations and 181 engineered features over a
 71-day, 6,645-contract BTC panel at 5-second resolution.
 
-**4. Four candidates in live paper-forward validation.**
-Two active paper candidates, one per asset, alongside two experimental forward
-shadows. Each is evaluated prospectively against a frozen specification, with
-promotion and suspension governed by rules fixed before the evaluation window
-opened. A candidate that fails those rules is suspended mechanically rather than
-by judgement, and two have been retired that way. An experimental shadow's
-forward results stay hidden until it has accumulated enough independent evidence
-to be reviewed under those rules.
+**4. Three candidates in live paper-forward validation.**
+One active paper incumbent on BTC, alongside two experimental forward shadows
+(BTC and ETH). Each is evaluated prospectively against a frozen specification,
+with promotion and suspension governed by rules fixed before the evaluation
+window opened.
+
+A candidate that fails those rules is suspended mechanically rather than by
+judgement, and **three have now been retired that way** — most recently the ETH
+incumbent, on its own forward evidence, when its realised win rate fell below
+the break-even rate implied by its own fills. Suspended candidates are not
+presented as live strategies; their records are kept privately.
+
+An experimental shadow's forward results stay hidden until it has accumulated
+enough independent evidence to be reviewed under those rules. The BTC shadow has
+now passed that first checkpoint, which makes its figures visible but is
+informational only — it is not a promotion and not validated alpha.
 
 Figures and the live monitoring view are in the dashboard linked below.
 
@@ -165,7 +173,7 @@ pip install pandas pytest && python -m pytest tests/ -q     # 37 tests
 
 Live paper-forward monitoring: **https://borto3019.github.io/prediction-market-execution-lab/**
 
-Shows the active BTC and ETH paper candidates alongside two experimental
+Shows the active BTC paper incumbent alongside two experimental
 forward shadows, refreshed from the private pipeline. Sanitized: aggregates
 only, no strategy parameters, no raw data.
 
@@ -185,7 +193,7 @@ Being explicit about what each number is:
   venue APIs.
 - **Simulated execution** — every fill price shown. Orders are walked against the
   book that was standing at decision time. No real orders have been placed.
-- **Paper-forward** — the active BTC and ETH candidates plus the two experimental
+- **Paper-forward** — the active BTC incumbent plus the two experimental
   shadows. Evaluated prospectively against a frozen specification, but still
   simulation, not money.
 - **Historical / in-sample** — the specification search. Explicitly not evidence
