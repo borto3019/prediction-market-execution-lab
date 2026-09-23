@@ -3,8 +3,8 @@
  "source_root": "public_site",
  "file_count": 9,
  "total_bytes": 479531,
- "bundle_sha256": "6f13344746a44fe6b595dd1f77249a05e27492b74d9457dee3b9cc19d5885db2",
- "content_sha256": "086bd02973f3a42ffe7bf17e27ebd333b5a916ae820187c76430f9cf3b65d440",
+ "bundle_sha256": "d9956a0cd6a0f4aef689ae99cb254715e3a5c22e8c334b63c374e5b075639189",
+ "content_sha256": "023b3935079c780e293e5a201cafead40153b49231012cf9d1fe46c913bbe7e3",
  "sanitizer_passed": true,
  "allowlist_entries_without_files": [
   "hf_forward_v1/candidate_xvfv_cheap_yes_hf_v0.html"
@@ -50,7 +50,7 @@
    "path": "hf_forward_v1_data.json",
    "source": "hf_forward_v1/hf_forward_v1_data.json",
    "bytes": 16122,
-   "sha256": "ba53ae5b2097f026eaeb8f205787a348b97b536fdd654ed42cdcf9a6905f4b7c"
+   "sha256": "dfc3f00144391e5a40d273d54bc8b7950c25ab27efb0344866f87d290d72edda"
   },
   {
    "path": "index.html",
