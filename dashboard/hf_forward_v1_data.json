@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-02T21:52:57.617984Z",
- "source_latest_utc": "2026-10-02T14:47:04.439015Z",
+ "generated_utc": "2026-10-02T22:52:15.263354Z",
+ "source_latest_utc": "2026-10-02T22:47:03.735592Z",
  "stale_after_hours": 24,
  "warn_after_hours": 36,
  "status_badge": "Fresh-forward paper validation",
@@ -40,18 +40,18 @@
    },
    "ablation_note": "Removing the cross-venue channel leaves this rule completely unchanged, which is what distinguishes it from the active candidates.",
    "forward": {
-    "cum_pnl_usd": 34.02,
-    "resolved_trades": 231,
+    "cum_pnl_usd": 34.85,
+    "resolved_trades": 232,
     "contracts_per_entry": 10,
     "avg_capital_deployed_usd": 9.59,
     "avg_net_per_trade_usd": 0.15,
-    "net_per_100_deployed": 1.54,
-    "sharpe_ann": 5.13,
+    "net_per_100_deployed": 1.57,
+    "sharpe_ann": 5.26,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -16.05,
     "days_live": 27.2,
     "inception_utc": "2026-09-05T16:55:12.686390Z",
-    "latest_update_utc": "2026-10-02T13:47:01.233141Z",
+    "latest_update_utc": "2026-10-02T19:02:02.337220Z",
     "positive_day_pct": 85.2,
     "avg_entry_price": 0.956,
     "avg_fee_usd": 0.033,
@@ -214,9 +214,9 @@
      },
      {
       "date": "2026-10-02",
-      "daily_pnl": 0.51,
-      "cum_pnl": 34.02,
-      "drawdown": -8.33
+      "daily_pnl": 1.34,
+      "cum_pnl": 34.85,
+      "drawdown": -7.5
      }
     ],
     "state": "live"
@@ -247,20 +247,20 @@
    },
    "ablation_note": "Removing the cross-venue channel leaves this rule completely unchanged, which is what distinguishes it from the active candidates.",
    "forward": {
-    "cum_pnl_usd": -5.96,
-    "resolved_trades": 1271,
+    "cum_pnl_usd": -29.5,
+    "resolved_trades": 1285,
     "contracts_per_entry": 10,
-    "avg_capital_deployed_usd": 8.49,
-    "avg_net_per_trade_usd": -0.0,
-    "net_per_100_deployed": -0.06,
-    "sharpe_ann": -0.2,
+    "avg_capital_deployed_usd": 8.48,
+    "avg_net_per_trade_usd": -0.02,
+    "net_per_100_deployed": -0.27,
+    "sharpe_ann": -0.9,
     "sharpe_min_days": 5,
-    "max_drawdown_usd": -107.54,
+    "max_drawdown_usd": -122.67,
     "days_live": 27.3,
     "inception_utc": "2026-09-05T14:54:51.962184Z",
-    "latest_update_utc": "2026-10-02T14:32:03.938000Z",
+    "latest_update_utc": "2026-10-02T22:47:03.735592Z",
     "positive_day_pct": 60.7,
-    "avg_entry_price": 0.84,
+    "avg_entry_price": 0.839,
     "avg_fee_usd": 0.091,
     "daily_series": [
      {
@@ -427,9 +427,9 @@
      },
      {
       "date": "2026-10-02",
-      "daily_pnl": -45.01,
-      "cum_pnl": -5.96,
-      "drawdown": -99.13
+      "daily_pnl": -68.55,
+      "cum_pnl": -29.5,
+      "drawdown": -122.67
      }
     ],
     "state": "live"
@@ -464,20 +464,20 @@
    },
    "ablation_note": "Fresh-forward paper validation. The broader BTC search remains globally non-significant; this rule is being monitored prospectively.",
    "forward": {
-    "cum_pnl_usd": -27.53,
-    "resolved_trades": 932,
+    "cum_pnl_usd": -35.78,
+    "resolved_trades": 938,
     "contracts_per_entry": 10,
-    "avg_capital_deployed_usd": 6.42,
-    "avg_net_per_trade_usd": -0.03,
-    "net_per_100_deployed": -0.46,
-    "sharpe_ann": -0.55,
+    "avg_capital_deployed_usd": 6.41,
+    "avg_net_per_trade_usd": -0.04,
+    "net_per_100_deployed": -0.59,
+    "sharpe_ann": -0.72,
     "sharpe_min_days": 5,
-    "max_drawdown_usd": -116.04,
+    "max_drawdown_usd": -123.95,
     "days_live": 57.2,
     "inception_utc": "2026-08-06T18:16:50.061989Z",
-    "latest_update_utc": "2026-10-02T14:47:04.439015Z",
-    "positive_day_pct": 53.4,
-    "avg_entry_price": 0.63,
+    "latest_update_utc": "2026-10-02T22:47:02.136278Z",
+    "positive_day_pct": 51.7,
+    "avg_entry_price": 0.629,
     "avg_fee_usd": 0.121,
     "daily_series": [
      {
@@ -824,9 +824,9 @@
      },
      {
       "date": "2026-10-02",
-      "daily_pnl": 0.34,
-      "cum_pnl": -27.53,
-      "drawdown": -115.7
+      "daily_pnl": -7.91,
+      "cum_pnl": -35.78,
+      "drawdown": -123.95
      }
     ],
     "state": "live"
