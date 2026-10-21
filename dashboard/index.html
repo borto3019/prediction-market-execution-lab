@@ -128,7 +128,7 @@ fetch('hf_forward_v1_data.json').then(r=>r.json()).then(D=>{
     const sharpeLive = f.sharpe_ann==null ? '—' : f.sharpe_ann.toFixed(2);
     return `<div class="card ${cls[id]}">
       <h2>${c.title} <span class="code">${c.code}</span></h2>
-      <p class="mech">${c.mechanism} <span class="mono" style="color:var(--muted)">${c.asset} · ${c.side} · ${c.window}</span></p>
+      <p class="mech">${c.mechanism} <span class="mono" style="color:var(--muted)">${c.asset} · paper only · signal parameters withheld</span></p>
       <div class="mgroups">
         <div class="mgroup"><div class="glabel">Research OOF</div>
           <div class="mrow">
