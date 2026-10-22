@@ -90,42 +90,55 @@ public surface. Nothing crosses from paper into a live order path.
 
 ## Selected results
 
-**1. Multiple-testing discipline turns an apparent edge into a null result.**
-Across 4,820 specifications (2,410 on BTC, of which 2,236 evaluated cleanly),
-no BTC candidate has met the pre-registered promotion threshold in any research
-cycle. Individually attractive specifications do not survive the global
-search-adjusted p-value. This is the project's most important finding, and it is
-a negative one.
+Research pass 2026-10-22, organised by question. The full evidence, with
+confidence intervals, is on the dashboard.
 
-**2. Execution cost decides the sign, not the margin.**
-On these contracts a strategy's edge per trade is a few cents while walking the
-book for a realistic size costs a comparable amount. The break-even win rate is
-`w* = p + f/q` — entry probability plus fees over payout — and candidates that
-look profitable at mid-price frequently sit below it once filled at book-walk
-VWAP. `src/execution/orderbook_vwap.py` is the model used to make that call.
+**1. Historical edge did not survive prospective testing.**
+Six candidates passed nested walk-forward out-of-fold testing and were then
+run forward on unseen markets from zero-start paper ledgers: 5,927 simulated
+trades at walked 10-contract VWAP plus Kalshi fees, held to settlement. In
+research they averaged **+2.1 percentage points** of win rate above their
+break-even `w* = p + f/q`. Forward, the pooled margin is **−0.06 pp**
+(95% CI −0.87 to +0.74 pp). None of the six has a forward confidence interval
+above zero, and four have been retired or have triggered the frozen suspension
+rule on their own forward evidence. The gap between the two numbers is the cost
+of selecting from ~21,000 specifications, measured prospectively rather than
+assumed.
 
-**3. A high-frequency panel large enough to test on.**
-1.90M synchronized cross-venue observations and 181 engineered features over a
-71-day, 6,645-contract BTC panel at 5-second resolution.
+**2. The binary's price is a better forecaster than the spot-implied model.**
+Most of the failed candidates traded the gap between the Kalshi price and a
+barrier probability implied by Kraken spot, strike, time to expiry and trailing
+volatility. On 7,696 prospective entries, out of sample, the model's Brier
+score is worse than the Kalshi mid's by 0.022 (BTC) and 0.008 (ETH), both CIs
+above zero. Given the mid, the model's logistic coefficient is indistinguishable
+from zero (z = 0.13 / 0.21). The "mispricing" was mostly model error.
 
-**4. Three candidates in live paper-forward validation.**
-One active paper incumbent on BTC, alongside two experimental forward shadows
-(BTC and ETH). Each is evaluated prospectively against a frozen specification,
-with promotion and suspension governed by rules fixed before the evaluation
-window opened.
+**3. Execution cost decides the sign, not the margin.**
+Across every forward trade, the settlement edge measured from the mid was
++$533. Crossing the spread and walking the book cost $292, and exchange fees
+$645, leaving −$403. Fees alone exceed the total edge.
+`src/execution/orderbook_vwap.py` is the book-walk model used to make that call.
 
-A candidate that fails those rules is suspended mechanically rather than by
-judgement, and **three have now been retired that way** — most recently the ETH
-incumbent, on its own forward evidence, when its realised win rate fell below
-the break-even rate implied by its own fills. Suspended candidates are not
-presented as live strategies; their records are kept privately.
+**4. The binary reprices with spot inside the same seconds, so speed alone is not an edge.**
+On a fresh 10-day public tick sample (27M Kalshi prints, 1.5k contracts), Kalshi
+has already priced 63% of the model-implied change by the end of a three-sigma
+five-second Kraken move, and about 74% a minute later. All 22 rules preregistered
+before the sample was read lose or are insignificant after correction (reality-check
+p = 0.39): spot-jump following at 1–5 s latency, signed-flow following, and
+largest model-vs-mid gaps. Every latency rule loses about 2¢ per contract once
+the fee is paid. One lead is recorded for a future test: aggressive taker flow
+is contrarian for settlement on both assets. It does not survive correction
+across the 32 flow regressions.
 
-An experimental shadow's forward results stay hidden until it has accumulated
-enough independent evidence to be reviewed under those rules. The BTC shadow has
-now passed that first checkpoint, which makes its figures visible but is
-informational only — it is not a promotion and not validated alpha.
+**5. Infrastructure large enough to test on.**
+3.51M synchronized 5-second cross-venue observations and 181 engineered
+features (120-day, 11,290-contract BTC panel plus ETH), 5,136 high-frequency
+specifications across seven pre-registered cycles, and a global reality-check
+p-value of 1.00 (BTC) / 0.997 (ETH) on the latest cycle.
 
-Figures and the live monitoring view are in the dashboard linked below.
+No result here is a claim of profitability. The strongest surviving candidate
+(BTC, +$52.61 over 371 paper trades, CI touching zero) is attenuating on unseen
+data and is reported as an experiment in progress.
 
 ---
 
@@ -171,17 +184,22 @@ pip install pandas pytest && python -m pytest tests/ -q     # 37 tests
 
 ## Dashboard
 
-Live paper-forward monitoring: **https://borto3019.github.io/prediction-market-execution-lab/**
+**https://borto3019.github.io/prediction-market-execution-lab/**
 
-Shows the active BTC paper incumbent alongside two experimental
-forward shadows, refreshed from the private pipeline. Sanitized: aggregates
-only, no strategy parameters, no raw data.
+Organised around five research questions:
+- does historical edge survive prospective testing?
+- is the binary mispriced against a spot model?
+- how fast does it absorb spot moves?
+- does order flow predict?
+- where does the edge go?
 
-Two frozen DSA hypotheses are being evaluated prospectively on unseen BTC and
-ETH prediction-market contracts. Historical research and forward-paper results
-are reported separately, and a shadow's forward results stay hidden until it
-reaches a review threshold fixed in advance — so the outcome cannot influence
-when it is first read.
+It also carries the live status of the frozen paper candidates. It shows every
+forward-tested candidate's equity curve, not only the best. Historical
+out-of-fold and prospective forward phases are drawn separately and never
+joined. Candidates retired by the suspension policy appear de-identified.
+
+Sanitized: aggregates only. No strategy conditions, thresholds, entry side or
+entry window, no raw data.
 
 ---
 
@@ -193,18 +211,20 @@ Being explicit about what each number is:
   venue APIs.
 - **Simulated execution** — every fill price shown. Orders are walked against the
   book that was standing at decision time. No real orders have been placed.
-- **Paper-forward** — the active BTC incumbent plus the two experimental
-  shadows. Evaluated prospectively against a frozen specification, but still
-  simulation, not money.
+- **Paper-forward** — six frozen candidates run prospectively from zero-start
+  ledgers (two still running as experimental shadows). Still simulation, not money.
+- **Public tick sample** — 10 days of Kalshi prints and Kraken prints collected
+  for the 2026-10-22 pass. There the entry price is the first observed print on
+  the traded side after a stated reaction latency; depth is not observed.
 - **Historical / in-sample** — the specification search. Explicitly not evidence
   of edge; it is the input to the multiple-testing correction, not the output.
 
-No claim is made that this system has demonstrated alpha. The BTC result is a
-null, and the candidates in forward validation have outcomes not yet
-established. The most recent pre-registered mechanism search — six new
-candidate families over a fresh 19-day window — produced no new candidate on
-either asset; two of the six were genuinely exercised and rejected, while four
-fired too rarely to be evaluated at all.
+No claim is made that this system has demonstrated alpha. The pooled forward
+result across all six frozen candidates is a null. The latest pre-registered
+mechanism search (four new families, each guaranteed exercisable by a blind
+base-rate gate, on a fresh 8-day window) rejected all four on both assets below
+break-even. The 2026-10-22 pass added an independent public tick sample and
+preregistered 22 executable rules before seeing it; results are on the dashboard.
 
 ---
 
