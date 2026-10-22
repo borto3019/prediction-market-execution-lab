@@ -1,6 +1,5 @@
 /* WSS HF forward dashboard — extends the brand tokens of research_v1.
-   Candidate identity colors validated (dataviz six checks, dark surface):
-   XVFV-08 #5d6fe0. */
+   Candidate identity colors validated (dataviz six checks, dark surface). */
 :root{
   --bg:#08080d;--bg2:#101017;--bg3:#15151f;--surface3:#1c1c28;
   --bd:#21212e;--bd2:#2d2d3e;
@@ -94,3 +93,45 @@ svg text{fill:var(--dim);font-family:var(--mono);font-size:10px}
   .hero{padding:20px 16px}
   .wrap{padding:14px 12px 34px}
 }
+
+/* research sections (research_pass_2026-10-22) */
+.lede{color:var(--dim);font-size:.9em;margin:-4px 0 12px;max-width:820px}
+.lede b{color:var(--txt)}
+.findings{padding-left:20px;display:grid;gap:10px}
+.findings li{color:var(--dim);font-size:.92em}
+.findings li b{color:var(--txt)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.cap{color:var(--muted);font-size:.74em;margin-top:6px}
+.muted{color:var(--muted)}
+.viz-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.74em;color:var(--dim);margin:2px 0 8px}
+.viz-legend span{display:inline-flex;align-items:center;gap:6px}
+.viz-legend i{display:inline-block;width:14px;height:0;border-top:2px solid;border-radius:2px}
+.viz-tip{position:fixed;z-index:20;display:none;pointer-events:none;max-width:280px;
+  background:var(--surface3);border:1px solid var(--bd2);border-radius:7px;padding:7px 10px;
+  font-size:.76em;color:var(--txt);box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--bd);border-radius:8px}
+.tbl{border-collapse:collapse;width:100%;font-size:.8em;min-width:980px}
+.tbl td .mono,.tbl td.n{white-space:nowrap}
+.tbl th{text-align:left;color:var(--muted);font-weight:600;font-size:.86em;letter-spacing:.03em;
+  text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--bd2);background:var(--bg3);white-space:nowrap}
+.tbl td{padding:7px 10px;border-bottom:1px solid var(--bd);color:var(--dim);vertical-align:top;font-variant-numeric:tabular-nums}
+.tbl td b{color:var(--txt)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .v{font-weight:600}
+.qhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.qtag{font-family:var(--mono);font-size:.72em;color:var(--accent);border:1px solid var(--bd2);border-radius:5px;padding:1px 7px}
+.status-pill{display:inline-block;font-size:.68em;letter-spacing:.04em;text-transform:uppercase;
+  border:1px solid var(--bd2);border-radius:999px;padding:2px 9px;color:var(--warn);margin-left:6px}
+.method dl{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:6px 16px;font-size:.86em}
+.method dt{color:var(--txt);font-weight:600}
+.method dd{color:var(--dim)}
+@media(max-width:640px){.method dl{grid-template-columns:1fr}}
+/* experimental shadow cards (classes previously unstyled) */
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.ctitle{font-size:1.06em;font-weight:600}
+.csub{color:var(--muted);font-family:var(--mono);font-size:.74em;margin-top:2px}
+.badge{font-family:var(--mono);font-size:.62em;letter-spacing:.03em;border:1px solid var(--bd2);border-radius:999px;padding:3px 9px;color:var(--warn);white-space:nowrap}
+.note{color:var(--dim);font-size:.84em;margin:8px 0}
+.card .mgroup+.mgroup,.card .mgroup+.note{margin-top:10px}
+.card .mrow+.mrow{margin-top:8px}

@@ -67,7 +67,7 @@
     document.title = c.code + ' — ' + c.title + ' — WSS HF';
     el('c-title').innerHTML = `${c.title} <span class="code">${c.code}</span>`;
     el('c-mech').textContent = c.mechanism;
-    el('c-window').textContent = `${c.asset} · buys ${c.side} · ${c.window} · one entry per contract · settlement-held`;
+    el('c-window').textContent = `${c.asset} · simulated paper execution · signal parameters, side and entry window withheld`;
     const r_ = c.research_oof, p = c.replay;
     el('kv-research').innerHTML = [
       [money(r_.pnl_usd), 'OOF PnL'], [r_.trades.toLocaleString(), 'OOF trades'],
@@ -99,8 +99,11 @@
     svgChart(el('chart-dd'), f.daily_series, 'drawdown', 'line', color);
     svgChart(el('chart-daily'), f.daily_series, 'daily_pnl', 'bar', color);
     el('c-ablation').textContent = c.ablation_note;
+    const chip = document.getElementById('c-status');
+    if (chip && c.status) chip.lastChild.textContent = c.status +
+      (c.verdict_utc ? ' (frozen policy v1.1.0, ' + c.verdict_utc.slice(0,10) + ')' : '');
     el('c-method').textContent =
-      'Data window: synchronized 5-second Kalshi/Kraken ETH panel (frozen research snapshot) for ' +
+      'Data window: synchronized 5-second Kalshi/Kraken ' + c.asset + ' panel (frozen research snapshot) for ' +
       'selection; live public market state for forward evaluation. ' + D.sharpe_note +
       ' Fills are simulated with a walked 10-contract VWAP against the visible book plus exchange fees; ' +
       'stale or partial books reject the entry. ' + D.status_line +

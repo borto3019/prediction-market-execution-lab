@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>High-Frequency Prediction Market Research — WSS</title>
+<title>Prediction Market Execution Lab</title>
+<meta name="description" content="Quantitative research on Kalshi 15-minute BTC/ETH binaries against Kraken spot: price discovery, calibration, execution cost and pre-registered paper-forward validation. Paper trading only.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,24 +13,121 @@
 <div id="stale-banner" style="display:none"></div>
 
 <div class="hero">
-  <h1>High-Frequency Prediction Market Research</h1>
-  <p class="sub">Cross-venue ETH paper candidates selected from a synchronized
-  5-second Kalshi–Kraken research panel.</p>
-  <span class="chip"><span class="dot"></span>Fresh-forward paper validation</span>
-  <span class="chip">Paper-only · simulation · no real orders</span>
+  <h1>Prediction Market Execution Lab</h1>
+  <p class="sub">Research on Kalshi's 15-minute BTC and ETH binaries against the Kraken
+  spot book: how fast the binary absorbs spot information, whether a spot-implied
+  model beats its price, what it costs to trade, and whether any edge found
+  historically survives prospective paper trading under pre-registered rules.</p>
+  <span class="chip"><span class="dot"></span>Paper-only · simulated execution · no real orders</span>
+  <span class="chip">Research pass 2026-10-22</span>
   <div id="refreshed" class="mono" style="margin-top:10px;font-size:.78em;color:#969cab"></div>
 </div>
 
 <div class="metrics">
-  <div class="metric"><div class="v" id="hd-obs">—</div><div class="k">Synchronized observations</div></div>
-  <div class="metric"><div class="v" id="hd-feat">—</div><div class="k">Engineered features</div></div>
-  <div class="metric"><div class="v" id="hd-specs">—</div><div class="k">Specifications attempted</div></div>
-  <div class="metric"><div class="v" id="hd-active">—</div><div class="k">Active paper candidates</div></div>
-  <div class="metric"><div class="v" id="hd-scale">—</div><div class="k" id="hd-scale-k">Contracts / entry</div></div>
+  <div class="metric"><div class="v" id="hd-obs">—</div><div class="k">Synchronized 5 s cross-venue observations</div></div>
+  <div class="metric"><div class="v" id="hd-specs-all">—</div><div class="k">Specifications &amp; model fits scored</div></div>
+  <div class="metric"><div class="v" id="hd-fwd-trades">—</div><div class="k">Prospective paper trades · <span id="hd-fwd-cands">—</span> frozen candidates</div></div>
+  <div class="metric"><div class="v" id="hd-prints">—</div><div class="k" id="hd-prints-k">Kalshi prints (public sample)</div></div>
+  <div class="metric"><div class="v">0</div><div class="k">Edges validated after costs</div></div>
 </div>
 
 <section>
-  <h3>Active Paper Candidates</h3>
+  <h3>What the evidence says</h3>
+  <div class="panel" id="rs-findings"><p>Loading…</p></div>
+</section>
+
+<section>
+  <h3 class="qhead"><span class="qtag">Q1</span> Does historical edge survive prospective testing?</h3>
+  <p class="lede">Six candidates passed nested walk-forward out-of-fold (OOF) testing and were
+  then run forward on unseen markets from zero-start paper ledgers, entering at the
+  walked 10-contract VWAP plus Kalshi fees and holding to settlement. Historical and
+  forward evidence are separate streams and are never added together. Forward data
+  through <span class="mono" id="rs-forward-cutoff">—</span>.</p>
+  <div id="rs-fwd-table" style="margin-bottom:12px"></div>
+  <div class="chart-box"><h4>Research margin vs prospective margin (win rate minus break-even w* = p + f/q)</h4><div id="rs-shrink"></div>
+    <p class="cap">Research OOF margins are approval-time figures. Forward CIs are day-block bootstrap (2,000 draws). The pooled forward margin across all six is near zero.</p></div>
+  <p class="lede" style="margin-top:14px"><b>Cumulative P&amp;L, all six candidates (not just the best).</b> Grey: historical OOF
+  as re-scored in research cycle 2026-08-03, up to each candidate's approval cutoff
+  (R1, R3: 2026-07-22; all others: 2026-08-03). Blue on the tinted
+  background: prospective paper forward from inception; red wash: forward drawdown. Units: USD per
+  10-contract entry. The two phases are never joined.</p>
+  <div class="grid3" id="rs-equity"></div>
+</section>
+
+<section>
+  <h3 class="qhead"><span class="qtag">Q2</span> Is the binary mispriced relative to a spot-implied model?</h3>
+  <p class="lede">Every candidate above that failed forward traded a gap between the Kalshi price
+  and a barrier probability implied by Kraken spot, strike, time to expiry and trailing
+  realised volatility. The direct test asks which of the two forecast settlement better, on
+  prospective entries neither was fitted to (first entry per contract, chronological 60/40 split
+  for the recalibration).</p>
+  <div class="grid2">
+    <div class="chart-box"><h4>Reliability — BTC</h4><div id="rs-rel-btc"></div></div>
+    <div class="chart-box"><h4>Reliability — ETH</h4><div id="rs-rel-eth"></div></div>
+  </div>
+  <div id="rs-cal-table" style="margin:12px 0"></div>
+  <div class="grid2">
+    <div class="chart-box"><h4>Claimed edge vs realised — BTC</h4><div id="rs-dec-btc"></div></div>
+    <div class="chart-box"><h4>Claimed edge vs realised — ETH</h4><div id="rs-dec-eth"></div></div>
+  </div>
+  <p class="cap">The model claims edges of up to 30–36 points in the top decile. Realised outcome minus
+  mid stays within a few points in every decile and shows no monotone relation to the claimed gap, and
+  net returns after the spread and fees are near zero or negative throughout. Predictive accuracy is not
+  the same as executable profitability. Here there is little of either.</p>
+  <div class="panel needs-mw" style="margin-top:12px">
+    <p><b>Replication on an independent public tick sample</b> (barrier model with 1-second Kraken vol, five
+    fixed checkpoints per contract, test days only):</p>
+    <div id="rs-mw-cal" style="margin-top:8px"></div>
+  </div>
+</section>
+
+<section>
+  <h3 class="qhead"><span class="qtag">Q3</span> How fast does Kalshi absorb spot moves?</h3>
+  <p class="lede">Event study on the public tick sample. Event: a Kraken five-second log move of at least
+  three trailing-vol standard deviations. Response: change in the Kalshi two-sided trade-implied mid,
+  divided by the change the barrier model implies. 100% means fully priced. Bands are 95% bootstrap
+  CIs over asset-day blocks.</p>
+  <div class="chart-box needs-mw"><h4>Pass-through of the model-implied move</h4><div id="rs-pass"></div>
+    <p class="cap">h = 0 is the end of the five-second spot window, so the value there is repricing in the same seconds as
+    the spot move. The response then flattens below 100% everywhere except in the final three minutes. The shortfall
+    does not close, so it reads as the spot model overstating the move (Q2) rather than as delay.</p></div>
+  <div class="grid2">
+    <div class="chart-box needs-mw"><h4>By Kalshi book activity (both assets)</h4><div id="rs-pass-liq"></div></div>
+    <div class="chart-box needs-mw"><h4>By time to expiry (both assets)</h4><div id="rs-pass-tte"></div></div>
+  </div>
+  <p class="lede" style="margin-top:12px"><b>Is what remains tradable?</b> Preregistered rules on the four held-out test
+  days: buy the side the move indicates at the first observed print on that side after a reaction
+  latency, hold to settlement, one contract, one entry per contract and side. Other families: follow
+  signed taker flow (Q4) and trade the largest model-vs-mid gaps (Q2). All 22 specifications are
+  shown. P-values are Holm-adjusted across all 22.</p>
+  <div id="rs-exec" class="needs-mw"></div>
+</section>
+
+<section>
+  <h3 class="qhead"><span class="qtag">Q4</span> Does order flow predict the next quote or the outcome?</h3>
+  <p class="lede">Signed Kalshi taker flow, (YES-taker − NO-taker contracts) / total over the trailing 30 s,
+  sampled every 5 s. It is a channel the 181-feature book panel never used. Flow-sorted deciles of the next
+  30 s mid change and of the settlement surprise (outcome − mid). Flow barely moves the next quote. Settlement
+  leans <i>against</i> heavy flow, a pattern that does not survive multiple-testing correction. Following the
+  flow at the first print after 1 s loses on all eight preregistered variants.</p>
+  <div class="grid2">
+    <div class="chart-box needs-mw"><h4>BTC</h4><div id="rs-flow-btc"></div></div>
+    <div class="chart-box needs-mw"><h4>ETH</h4><div id="rs-flow-eth"></div></div>
+  </div>
+</section>
+
+<section>
+  <h3 class="qhead"><span class="qtag">Q5</span> Where does the edge go?</h3>
+  <p class="lede">Per forward trade: the settlement edge measured from the Kalshi mid, the
+  cost of crossing the spread and walking the book to 10 contracts, and the exchange fee. Each
+  candidate's mid is reconstructed from its own entry record.</p>
+  <div class="chart-box"><h4>Decomposition per 10-contract trade (USD)</h4><div id="rs-costs"></div></div>
+  <p class="lede"><b>Sensitivity of forward net P&amp;L</b> to a worse fill (+1 / +2 ticks on every entry) and higher fees:</p>
+  <div id="rs-sens"></div>
+</section>
+
+<section>
+  <h3>Paper candidates still running</h3>
   <div class="cards" id="cards"></div>
 </section>
 
@@ -39,45 +137,45 @@
   <div class="cards" id="exp-cards"></div>
 </section>
 
-
 <section>
-  <h3>BTC High-Frequency Search</h3>
-  <div class="panel">
-    <p><b id="btc-outcome">—</b>
-    The identical panel, feature set, and nested out-of-fold protocol were applied to BTC
-    over the full high-frequency coverage window.</p>
-    <div class="btc-facts">
-      <div class="m"><div class="v mono" id="btc-att">—</div><div class="k">Specs attempted</div></div>
-      <div class="m"><div class="v mono" id="btc-ok">—</div><div class="k">Specs completed</div></div>
-      <div class="m"><div class="v mono" id="btc-days">—</div><div class="k">Panel coverage</div></div>
-      <div class="m"><div class="v mono" id="btc-ctr">—</div><div class="k">Contracts</div></div>
-    </div>
+  <h3>Methodology and data</h3>
+  <div class="panel method">
+    <dl>
+      <dt>Live collection</dt><dd>Full-depth Kalshi and Kraken order books every 5 s for BTC and ETH, plus
+        every Kalshi print with its venue trade_id, aligned with backward-only as-of joins (an observation is
+        never matched to reference data recorded after it). Fail-closed collection validation and gap
+        classification, e.g. the Thursday Kalshi maintenance window.</dd>
+      <dt>Research panel</dt><dd><span id="btc-days">—</span> of BTC, <span id="btc-ctr">—</span> contracts,
+        181 engineered features. <span id="btc-outcome">—</span>
+        <span class="muted">(<span id="btc-att">—</span> BTC specifications attempted, <span id="btc-ok">—</span> completed; <span id="hd-specs">—</span> across both assets in the HF architecture.)</span></dd>
+      <dt>Search discipline</dt><dd>Hypotheses are written as mechanism memos and catalogue-hashed before
+        scoring. Evaluation is nested walk-forward out-of-fold, then a global reality-check adjustment over the
+        whole search; the latest cycle's adjusted p-values are 1.00 (BTC) and 0.997 (ETH).
+        Blind base-rate gates check that every hypothesis can fire before it is frozen.</dd>
+      <dt>Execution model</dt><dd>Aggressive entries only: the walked 10-contract VWAP against the visible book,
+        the canonical Kalshi taker fee ceil(0.07·q·p·(1−p)) cents, held to settlement. Passive fills are not
+        assumed. A separate preregistered queue-model study found adverse selection offsets the cost saving.
+        In the public tick sample (Q3–Q4) the entry price is the first observed print on the traded side after
+        the latency; depth is not observed there.</dd>
+      <dt>Forward governance</dt><dd>Zero-start ledgers, frozen specifications, review checkpoints opened on
+        blind evidence counts (trades, contracts, days, hour and weekday coverage), and a frozen mechanical
+        suspension policy. Four of six candidates have met it.</dd>
+      <dt>Public tick sample</dt><dd>Collected for this pass from public endpoints: <span class="mono" id="rs-mw-window">—</span>.</dd>
+      <dt>Not established</dt><dd>Any profitable rule; passive execution value; performance at larger size; and
+        anything about the private 5 s panel since 2026-09-22, which this pass did not re-search.</dd>
+    </dl>
+    <div id="rs-coverage" style="margin-top:12px" class="needs-mw"></div>
+    <p class="cap">BTC contracts carry about 38,000 Kalshi prints each, so a time-budgeted fetch reached 544 of 953 BTC
+    contracts. They were taken in a seeded, outcome-blind random order that spans all ten days. Missing contracts are
+    excluded, never filled. Spot is observed only when Kraken trades, so the latest spot print is often older than 1 s.</p>
   </div>
 </section>
 
-<section>
-  <h3>Research Architecture</h3>
-  <div class="panel">
-    <div class="arch">
-      <span class="node src">Kalshi ETH L2</span>
-      <span class="plus">+</span>
-      <span class="node src">Kraken ETH L2</span>
-      <span class="arrow">→</span>
-      <span class="node">Causal synchronized panel</span>
-      <span class="arrow">→</span>
-      <span class="node">Cross-venue state</span>
-      <span class="arrow">→</span>
-      <span class="node">Nested OOF search</span>
-      <span class="arrow">→</span>
-      <span class="node">Stateful replay</span>
-      <span class="arrow">→</span>
-      <span class="node">Fresh-forward paper validation</span>
-    </div>
-  </div>
-</section>
+<div class="metric" style="display:none"><div class="v" id="hd-feat"></div><div class="v" id="hd-active"></div><div class="v" id="hd-scale"></div><div class="k" id="hd-scale-k"></div></div>
 
-<p class="footer-note">Research candidates are evaluated prospectively in simulation;
-no real orders are submitted. <span id="sharpe-note"></span>
+<p class="footer-note">Every result is simulated paper execution against recorded or live public books. No
+real orders are submitted and nothing here is investment advice. Strategy conditions, thresholds, entry side
+and entry window are withheld. <span id="sharpe-note"></span>
 <span id="gen-ts" class="mono"></span></p>
 
 </div>
@@ -127,8 +225,8 @@ fetch('hf_forward_v1_data.json').then(r=>r.json()).then(D=>{
     const live = f.state==='live';
     const sharpeLive = f.sharpe_ann==null ? '—' : f.sharpe_ann.toFixed(2);
     return `<div class="card ${cls[id]}">
-      <h2>${c.title} <span class="code">${c.code}</span></h2>
-      <p class="mech">${c.mechanism} <span class="mono" style="color:var(--muted)">${c.asset} · ${c.side} · ${c.window}</span></p>
+      <h2>${c.title} <span class="code">${c.code}</span>${c.status && c.status!=='Active paper candidate' ? `<span class="status-pill">${c.status}</span>` : ''}</h2>
+      <p class="mech">${c.mechanism} <span class="mono" style="color:var(--muted)">${c.asset} · paper only · signal parameters withheld</span></p>
       <div class="mgroups">
         <div class="mgroup"><div class="glabel">Research OOF</div>
           <div class="mrow">
@@ -186,7 +284,7 @@ fetch('hf_forward_v1_data.json').then(r=>r.json()).then(D=>{
       <div class="card">
         <div class="chead">
           <div><div class="ctitle">${c.title||id}</div>
-               <div class="csub">${c.code||''} · ${c.asset||''} · ${c.side||''} · ${c.window||''}</div></div>
+               <div class="csub">${c.code||''} · ${c.asset||''} · signal parameters withheld</div></div>
           <div class="badge">${c.lifecycle_status||'EXPERIMENTAL_FORWARD_SHADOW'}</div>
         </div>
         <p class="mech">${c.mechanism||''}</p>
@@ -235,5 +333,6 @@ fetch('hf_forward_v1_data.json').then(r=>r.json()).then(D=>{
   if (hdActive) hdActive.textContent = activeIds.length;
 });
 </script>
+<script src="research.js"></script>
 </body>
 </html>
