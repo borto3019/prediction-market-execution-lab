@@ -2,9 +2,9 @@
  "contract_version": 1,
  "source_root": "public_site",
  "file_count": 9,
- "total_bytes": 488392,
- "bundle_sha256": "2408063dc85ac70cd4ccd9f323208cf74ed8fdc96abb391b7347862436b33f72",
- "content_sha256": "16292ff079881c41c4137762f1d37fcfbbe8f2bce45f0f0fa6b679c063251a6e",
+ "total_bytes": 489445,
+ "bundle_sha256": "62ceabfbab4f1fe62203b8a25e92c85a099da73e5be0a3db2a00d265925a2030",
+ "content_sha256": "6f0e044eda54d3b39417f1d8e2593808a354083d7597ed1417f77a6f85287452",
  "sanitizer_passed": true,
  "allowlist_entries_without_files": [
   "hf_forward_v1/candidate_xvfv_cheap_yes_hf_v0.html"
@@ -49,8 +49,8 @@
   {
    "path": "hf_forward_v1_data.json",
    "source": "hf_forward_v1/hf_forward_v1_data.json",
-   "bytes": 24983,
-   "sha256": "fe58cfda1dc63de05411abcd04357a6e6c7ca565315ca4ef53b04dc4328f342e"
+   "bytes": 26036,
+   "sha256": "0672b74796c1a6b174728df8fae2f7c2aa65a9a0470507848553c50215b959e1"
   },
   {
    "path": "index.html",
