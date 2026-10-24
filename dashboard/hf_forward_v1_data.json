@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-22T22:15:19.981625Z",
- "source_latest_utc": "2026-10-22T14:02:02.530774Z",
+ "generated_utc": "2026-10-24T07:07:22.814784Z",
+ "source_latest_utc": "2026-10-23T13:47:05.035817Z",
  "stale_after_hours": 24,
  "warn_after_hours": 36,
  "status_badge": "Fresh-forward paper validation",
@@ -27,10 +27,12 @@
    "code": "HFW-018",
    "title": "Depth-Slope Asymmetry",
    "asset": "BTC",
+   "side": "YES",
+   "window": "2\u20137 min to expiry",
    "tier": "experimental",
    "governance_version": "v2",
    "required_label": "Experimental prospective paper validation \u2014 not validated alpha.",
-   "mechanism": "Spot order-book depth-geometry family (Kraken L2), independent of the cross-venue dislocation channel.",
+   "mechanism": "Enters YES when spot already sits beyond the strike and the Kraken book is shaped so that resting size builds faster behind the bid than behind the ask \u2014 a depth-geometry signal, independent of the cross-venue dislocation the active strategies use.",
    "research_oof": {
     "pnl_usd": 87.88,
     "trades": 875,
@@ -38,20 +40,20 @@
    },
    "ablation_note": "Removing the cross-venue channel leaves this rule completely unchanged, which is what distinguishes it from the active candidates.",
    "forward": {
-    "cum_pnl_usd": 52.61,
-    "resolved_trades": 371,
+    "cum_pnl_usd": 55.03,
+    "resolved_trades": 381,
     "contracts_per_entry": 10,
     "avg_capital_deployed_usd": 9.62,
     "avg_net_per_trade_usd": 0.14,
-    "net_per_100_deployed": 1.47,
-    "sharpe_ann": 4.98,
+    "net_per_100_deployed": 1.5,
+    "sharpe_ann": 5.16,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -16.42,
-    "days_live": 47.2,
+    "days_live": 48.6,
     "inception_utc": "2026-09-05T16:55:12.686390Z",
-    "latest_update_utc": "2026-10-22T13:32:05.434387Z",
-    "positive_day_pct": 84.1,
-    "avg_entry_price": 0.958,
+    "latest_update_utc": "2026-10-23T13:47:05.035817Z",
+    "positive_day_pct": 84.4,
+    "avg_entry_price": 0.959,
     "avg_fee_usd": 0.032,
     "daily_series": [
      {
@@ -314,8 +316,14 @@
      },
      {
       "date": "2026-10-22",
-      "daily_pnl": 0.2,
-      "cum_pnl": 52.61,
+      "daily_pnl": 0.85,
+      "cum_pnl": 53.26,
+      "drawdown": 0.0
+     },
+     {
+      "date": "2026-10-23",
+      "daily_pnl": 1.77,
+      "cum_pnl": 55.03,
       "drawdown": 0.0
      }
     ],
@@ -334,10 +342,12 @@
    "code": "HFW-018",
    "title": "Depth-Slope Asymmetry",
    "asset": "ETH",
+   "side": "YES",
+   "window": "2\u20137 min to expiry",
    "tier": "experimental",
    "governance_version": "v2",
    "required_label": "Experimental prospective paper validation \u2014 not validated alpha.",
-   "mechanism": "Spot order-book depth-geometry family (Kraken L2), independent of the cross-venue dislocation channel.",
+   "mechanism": "Enters YES when spot already sits beyond the strike and the Kraken book is shaped so that resting size builds faster behind the bid than behind the ask \u2014 a depth-geometry signal, independent of the cross-venue dislocation the active strategies use.",
    "research_oof": {
     "pnl_usd": 197.49,
     "trades": 2315,
@@ -345,19 +355,19 @@
    },
    "ablation_note": "Removing the cross-venue channel leaves this rule completely unchanged, which is what distinguishes it from the active candidates.",
    "forward": {
-    "cum_pnl_usd": 81.52,
-    "resolved_trades": 2169,
+    "cum_pnl_usd": 60.6,
+    "resolved_trades": 2215,
     "contracts_per_entry": 10,
     "avg_capital_deployed_usd": 8.51,
-    "avg_net_per_trade_usd": 0.04,
-    "net_per_100_deployed": 0.44,
-    "sharpe_ann": 1.56,
+    "avg_net_per_trade_usd": 0.03,
+    "net_per_100_deployed": 0.32,
+    "sharpe_ann": 1.15,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -140.95,
-    "days_live": 47.3,
+    "days_live": 48.7,
     "inception_utc": "2026-09-05T14:54:51.962184Z",
-    "latest_update_utc": "2026-10-22T14:02:02.530774Z",
-    "positive_day_pct": 64.6,
+    "latest_update_utc": "2026-10-23T13:47:04.240716Z",
+    "positive_day_pct": 63.3,
     "avg_entry_price": 0.842,
     "avg_fee_usd": 0.09,
     "daily_series": [
@@ -645,9 +655,15 @@
      },
      {
       "date": "2026-10-22",
-      "daily_pnl": 17.91,
-      "cum_pnl": 81.52,
-      "drawdown": -11.65
+      "daily_pnl": -6.98,
+      "cum_pnl": 56.63,
+      "drawdown": -36.54
+     },
+     {
+      "date": "2026-10-23",
+      "daily_pnl": 3.97,
+      "cum_pnl": 60.6,
+      "drawdown": -32.57
      }
     ],
     "state": "live"
@@ -665,7 +681,9 @@
    "code": "HFW-014",
    "title": "Aged Cross-Venue Dislocation",
    "asset": "BTC",
-   "mechanism": "Cross-venue fair-value dislocation family, with a persistence condition on the dislocation.",
+   "side": "YES",
+   "window": "2\u20137 min to expiry",
+   "mechanism": "Enters YES when the Kalshi executable price has sat below a Kraken-derived barrier fair value for a sustained period \u2014 a dislocation that has survived the market's chance to close it.",
    "research_oof": {
     "pnl_usd": 120.6,
     "trades": 643,
@@ -680,19 +698,19 @@
    },
    "ablation_note": "Fresh-forward paper validation. The broader BTC search remains globally non-significant; this rule is being monitored prospectively.",
    "forward": {
-    "cum_pnl_usd": -156.57,
-    "resolved_trades": 1319,
+    "cum_pnl_usd": -163.39,
+    "resolved_trades": 1327,
     "contracts_per_entry": 10,
     "avg_capital_deployed_usd": 6.27,
     "avg_net_per_trade_usd": -0.12,
-    "net_per_100_deployed": -1.89,
-    "sharpe_ann": -2.17,
+    "net_per_100_deployed": -1.96,
+    "sharpe_ann": -2.25,
     "sharpe_min_days": 5,
     "max_drawdown_usd": -253.7,
-    "days_live": 77.2,
+    "days_live": 78.5,
     "inception_utc": "2026-08-06T18:16:50.061989Z",
-    "latest_update_utc": "2026-10-22T14:02:02.032138Z",
-    "positive_day_pct": 50.0,
+    "latest_update_utc": "2026-10-23T07:02:05.249167Z",
+    "positive_day_pct": 49.4,
     "avg_entry_price": 0.615,
     "avg_fee_usd": 0.122,
     "daily_series": [
@@ -1160,20 +1178,22 @@
      },
      {
       "date": "2026-10-22",
-      "daily_pnl": 8.96,
-      "cum_pnl": -156.57,
-      "drawdown": -244.74
+      "daily_pnl": 7.58,
+      "cum_pnl": -157.95,
+      "drawdown": -246.12
+     },
+     {
+      "date": "2026-10-23",
+      "daily_pnl": -5.44,
+      "cum_pnl": -163.39,
+      "drawdown": -251.56
      }
     ],
     "state": "live"
    },
    "lifecycle": "active",
+   "status": "Active paper candidate",
    "entries_stopped": false,
-   "status": "Suspension rule met \u2014 entry stop pending",
-   "status_code": "SUSPENDED_FORWARD_FAILURE",
-   "verdict_utc": "2026-10-22T16:04:30Z",
-   "verdict_resolved_trades": 1319,
-   "verdict_pnl_usd": -156.57,
    "deep_dive": true
   }
  },

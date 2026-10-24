@@ -1,12 +1,14 @@
 {
  "contract_version": 1,
  "source_root": "public_site",
- "file_count": 11,
- "total_bytes": 719501,
- "bundle_sha256": "8017ba0401816bb634ba1c288ae4ceab012edfcca97ff28b1e0267b61b6ca787",
- "content_sha256": "00c4000973dcba89628cbd33104f2840d3465ddb4d4598d06d0de982f91d3041",
+ "file_count": 9,
+ "total_bytes": 490150,
+ "bundle_sha256": "25bcb14f85095a38a7f34c9cd4cad9c152f3af5380dc0d4d3db6eedf1e37ebdb",
+ "content_sha256": "12d6863ab8065b97a704c0e297f31a191cc02a81c2afd423e7a9919e15b8864d",
  "sanitizer_passed": true,
- "allowlist_entries_without_files": [],
+ "allowlist_entries_without_files": [
+  "hf_forward_v1/candidate_xvfv_cheap_yes_hf_v0.html"
+ ],
  "files": [
   {
    "path": "assets/apple-touch-icon.png",
@@ -35,44 +37,32 @@
   {
    "path": "candidate.js",
    "source": "hf_forward_v1/candidate.js",
-   "bytes": 7209,
-   "sha256": "1b6dfa4985ae923814e0e0cc34bcd5aaccac9e5e3724c99e9fd80147177fd23f"
+   "bytes": 6982,
+   "sha256": "3015f8d80111fdd5084dd125a9b8cc65a769140b7712c3b2a3a57eb6612c383a"
   },
   {
    "path": "candidate_hfw014_rpq_btc_v0.html",
    "source": "hf_forward_v1/candidate_hfw014_rpq_btc_v0.html",
-   "bytes": 1541,
-   "sha256": "da957c450504f0ff19f130038d1a6d584ab94b6af66f4d28fba26a2de1601219"
+   "bytes": 1527,
+   "sha256": "98adcaad046befba386b879a5c7c12b56f3f3e4ece89d38a08b04b139dc7765e"
   },
   {
    "path": "hf_forward_v1_data.json",
    "source": "hf_forward_v1/hf_forward_v1_data.json",
-   "bytes": 26000,
-   "sha256": "5db48a996307757484ffd0e3fde02549f9888724c507524f8de7c56c9ecbb1d5"
+   "bytes": 26741,
+   "sha256": "5c687b45aed5797fb7c6da9e62721f0f348f0f5de8525666d8368a5aa64483ca"
   },
   {
    "path": "index.html",
    "source": "hf_forward_v1/index.html",
-   "bytes": 23169,
-   "sha256": "ac11fe07ee0952670ffdd7a03f2f4b765cd5fb065225610f9f515a864193ce1a"
-  },
-  {
-   "path": "research.js",
-   "source": "hf_forward_v1/research.js",
-   "bytes": 26354,
-   "sha256": "6cadddb9327b6df74fc76470bde0f5461b17e3c474920976b66ba6380822df95"
-  },
-  {
-   "path": "research_data.json",
-   "source": "hf_forward_v1/research_data.json",
-   "bytes": 191770,
-   "sha256": "aa39949281a6d1ce8da578a34c0ff575a57083ac658c8e72662de14373cbd57f"
+   "bytes": 14354,
+   "sha256": "5cebcf25e73d918dbd0874c3dc96eaebf18bc2c4810d86ca4884412e24f1f7b0"
   },
   {
    "path": "style.css",
    "source": "hf_forward_v1/style.css",
-   "bytes": 8501,
-   "sha256": "068d2d18e752386c9f9b0490b41cb77f618e1cbaac5108228add1202dfc85762"
+   "bytes": 5589,
+   "sha256": "8d1b02da48d427b6dea2b1bfe0f52120b360da79c597f3a99d57dcdacdd5f327"
   }
  ]
 }
