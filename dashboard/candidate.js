@@ -67,7 +67,7 @@
     document.title = c.code + ' — ' + c.title + ' — WSS HF';
     el('c-title').innerHTML = `${c.title} <span class="code">${c.code}</span>`;
     el('c-mech').textContent = c.mechanism;
-    el('c-window').textContent = `${c.asset} · buys ${c.side} · ${c.window} · one entry per contract · settlement-held`;
+    el('c-window').textContent = `${c.asset} · simulated paper execution · signal parameters withheld`;
     const r_ = c.research_oof, p = c.replay;
     el('kv-research').innerHTML = [
       [money(r_.pnl_usd), 'OOF PnL'], [r_.trades.toLocaleString(), 'OOF trades'],

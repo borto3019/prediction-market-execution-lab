@@ -235,8 +235,8 @@ documentation, generic implementations of the techniques, sanitized aggregate
 results and the public dashboard.
 
 It deliberately excludes raw market data, collector infrastructure, strategy
-logic and parameters, candidate-generation internals, governance records and all
-credentials. Nothing here can reach the private system: publication is one-way.
+entry logic and parameters, candidate-generation internals, governance records
+and all credentials. Nothing here can reach the private system: publication is one-way.
 
 Every file is allowlisted, sanitized, secret-scanned and hash-manifested before
 it is published.
